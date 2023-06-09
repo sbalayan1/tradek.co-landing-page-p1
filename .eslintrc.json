@@ -1,3 +1,11 @@
+// config file for eslint
+
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next", "next/core-web-vitals", "eslint:recommended"],
+  "globals": {
+    "React": "readonly" //In the example above, React has been added as a global package for this project. By doing so, you are ensuring that React is always defined in functional components and JSX code, even if you haven’t explicitly mentioned import React from 'react' at the top of the file.
+  },
+  "rules": {
+    "no-unused-vars": "warn" // The second rule added here — no-unused-vars — will warn you if you have a variable defined in your file that is not being used anywhere across the app. This rule can help you with removing unnecessary variable declaration
+  }
 }
