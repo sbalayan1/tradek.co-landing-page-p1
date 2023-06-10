@@ -1,6 +1,11 @@
+"use client"
+import { useState } from 'react'
+import PortfolioGraph from "./Components/PortfolioChart/PortfolioGraph";
 import Timeframes from "./Components/PortfolioChart/Timeframes";
 
 export default function PortfolioChart() {
+    const [selected, setSelected] = useState("1m")
+
     return (
         <div className="mb-2">
             {/* Client component */}
@@ -10,10 +15,10 @@ export default function PortfolioChart() {
             </div>
             {/* client component */}
             <div className="h-96 border-2">
-                Graph
+                <PortfolioGraph selected={selected}/>
             </div>
             {/* client component */}
-            <Timeframes />
+            <Timeframes selected={selected} setSelected={setSelected}/>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import Dashboard from "./(dashboard)/Dashboard";
+import Dashboard from "./Dashboard/Dashboard";
 
 export default function Page() {
     return (

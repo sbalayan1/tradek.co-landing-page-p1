@@ -1,8 +1,7 @@
 "use client"
-import { useState } from 'react'
 
-export default function Timeframes() {
-    const [selected, setSelected] = useState("1d")
+export default function Timeframes({ selected, setSelected }: { selected: string, setSelected: Function } ) {
+    // const [selected, setSelected] = useState("1d")
     const timeframes = ["1d", "1w", "1m", "3m", "YTD", "1y", "ALL"]
 
 

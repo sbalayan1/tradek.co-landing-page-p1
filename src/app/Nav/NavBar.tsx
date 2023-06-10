@@ -12,7 +12,7 @@ export default function NavBar() {
     })
 
     return(
-        <div className="flex justify-between p-4 h-50 w-full">
+        <div className="flex justify-between p-4 h-50 w-full items-center">
             <div className="flex items-center">
                 <Link href="/" className="mr-4"><Image className="bg-green-600 rounded-xl" src="/icons8-feather-50.png" width={50} height={50} alt="robinhood logo"/></Link>
                 <h1>RobTheRich</h1>

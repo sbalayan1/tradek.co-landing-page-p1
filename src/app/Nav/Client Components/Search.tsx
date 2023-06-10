@@ -6,7 +6,7 @@ export default function Search() {
 
     return(
         <div className='border-2 w-1/3'>
-            <input className="w-full h-full p-2" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)}/>
+            <input className="w-full h-full p-2 text-black" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)}/>
         </div>
     )
 }
