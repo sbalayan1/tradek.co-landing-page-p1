@@ -6,10 +6,10 @@ import PortfolioChart from "./PortfolioChart";
 
 export default function Dashboard() {
     return (
-        <div className="flex p-4 w-screen justify-center">
-            <div className="flex ">
+        <div className="flex p-4 justify-center">
+            {/* <div className="flex "> */}
                 {/* This div should be a column with multiple sections*/}
-                <div className='border-2 p-4'> 
+                <div className='border-2 p-4 w-1/2'> 
 
                     {/* client component */}
                     <section>
@@ -36,7 +36,7 @@ export default function Dashboard() {
                 </div>
 
                 {/* this contains the users portfolio information such as current options/stocks/watchlists etc */}
-                <aside className="ml-2 p-4 border-4">
+                <aside className="ml-2 p-4 border-4 w-1/6">
                     <div>
                         <h1 className='text-xl'>Current Positions</h1>
                     </div>
@@ -44,7 +44,7 @@ export default function Dashboard() {
                         <h1 className='text-xl'>Lists</h1>
                     </section>
                 </aside>
-            </div>
+            {/* </div> */}
         </div>
     )
 }
