@@ -68,11 +68,6 @@ export default function PortfolioChart() {
         percentageChange: 0
     })
 
-
-    // const subData = getSubData(selected, data)
-    // const profit = calculateProfit(subData)
-    // const percentageChange = Math.floor((subData[subData.length - 1].balance - subData[0].balance)/subData.length) 
-
     const updateSubData = (timeframe: string) => {
         const updatedData = getSubData(timeframe, data.current)
         setSubData(updatedData)
