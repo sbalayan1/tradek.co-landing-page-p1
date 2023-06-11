@@ -38,7 +38,7 @@ const buildData = () => {
 }
 
 const getSubData = (tgt: string, arr: Profit[]) => {
-    if (tgt === "1d") return arr.slice(-1)
+    if (tgt === "1d") return arr.slice(-2)
     if (tgt === "1w") return arr.slice(-7)
     if (tgt === "1m") return arr.slice(-30)
     if (tgt === "3m") return arr.slice(-90)
@@ -63,6 +63,7 @@ export default function PortfolioChart() {
     const data = useRef(buildData())
     const [selected, setSelected] = useState("1m")
     const [subData, setSubData] = useState(getSubData(selected, data.current))
+    console.log(subData)
     const [stats, setStats] = useState({
         profit: 0,
         percentageChange: 0
