@@ -10,7 +10,7 @@ export default function BuyingPower() {
     // fetch buying power amt and render
 
     return (
-        <div>
+        <div className="mb-10">
             <div className="border-t-2 border-b-2 h-16 flex justify-between items-center text-xl" onClick={() => setIsOpen(!isOpen)}>
                 <h1>Buying Power</h1>
                 <h1>$100</h1>

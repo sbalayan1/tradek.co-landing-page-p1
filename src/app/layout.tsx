@@ -1,6 +1,6 @@
 import './globals.css'
 import { Recursive } from 'next/font/google' // automatically optimize your fonts (including custom fonts) and remove external network requests for improved privacy and performance.
-import NavBar from './Nav/NavBar'
+import NavBar from './(nav)/NavBar'
 const recursive = Recursive({ subsets: ['latin']})
 
 export const metadata = {

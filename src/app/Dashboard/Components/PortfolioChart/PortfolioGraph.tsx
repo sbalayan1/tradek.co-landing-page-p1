@@ -1,5 +1,4 @@
-// import React from 'react';
-"use client"
+// server component
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,8 +9,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-
 import { Line } from 'react-chartjs-2';
+
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
 export const options = {
@@ -40,9 +39,5 @@ export default function PortfolioGraph({ data }: { data: Profit[] }) {
         }]
     }
 
-    return (
-        <div className="">
-            <Line options={options} data={graphData}/>
-        </div>
-    )
+    return (<Line options={options} data={graphData}/>)
 }
