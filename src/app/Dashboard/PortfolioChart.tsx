@@ -1,18 +1,26 @@
 "use client"
-import React, { useEffect, useRef, useState } from 'react'
-import PortfolioGraph from "./Components/PortfolioChart/PortfolioGraph";
+import React, { useRef, useState } from 'react'
+
 import Timeframes from "./Components/PortfolioChart/Timeframes";
+import PortfolioGraph from './Components/PortfolioChart/PortfolioGraph';
 
 // import helper functions
-import { buildData, getSubData, calculateProfit } from './Dashboard';
+import { getSubData, calculateProfit } from '../helpers';
 
-export default function PortfolioChart() {
-    const data = useRef(buildData())
+interface Profit {
+    date: Date
+    balance: number
+}
+
+export default function PortfolioChart({ mockPortfolioData, initialData }: { mockPortfolioData: Profit[], initialData: Profit[] }) {
+
+    console.count('rendering component')
+    const data = useRef(mockPortfolioData)
     const [selected, setSelected] = useState("1m")
-    const [subData, setSubData] = useState(getSubData(selected, data.current))
+    const [subData, setSubData] = useState(initialData)
     const [stats, setStats] = useState({
-        profit: 0,
-        percentageChange: 0
+        profit: calculateProfit(subData),
+        percentageChange: Math.floor((subData[subData.length - 1].balance - subData[0].balance)/subData.length)
     })
 
     const updateSubData = (timeframe: string) => {
@@ -25,13 +33,7 @@ export default function PortfolioChart() {
         })
     }
 
-    useEffect(() => {
-        setStats({
-            profit: calculateProfit(subData),
-            percentageChange: Math.floor((subData[subData.length - 1].balance - subData[0].balance)/subData.length)
-        })
-    }, [subData])
-
+    
     return (
         <div className="mb-2">
             {/* Client component */}
