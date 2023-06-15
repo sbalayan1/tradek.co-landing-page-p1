@@ -40,14 +40,14 @@ interface MarketData {
 
 
 export default async function Dashboard() {
-    const stockData: MarketData = await getData()
+    // const userStockData: MarketData = await getData()
     const mockPortfolioData: Profit[] = buildData()
     const initialData: Profit[] = getSubData("1m", mockPortfolioData)
 
     return (
         <div className="flex p-4 justify-center">
             {/* This div should be a column with multiple sections*/}
-            <div className='border-2 p-4 w-1/2'> 
+            <div className='p-4 w-1/2'> 
 
                 {/* client component */}
                 <section>
@@ -73,15 +73,15 @@ export default async function Dashboard() {
             </div>
 
             {/* this contains the users portfolio information such as current options/stocks/watchlists etc */}
-            <aside className="ml-2 p-4 border-4">
-                <div>
+            <aside className="ml-2 border-2">
+                {/* <div>
                     <h1 className='text-xl'>Current Positions</h1>
                     <PortfolioContainer />
-                </div>
-                <section>
-                    <h1 className='text-xl'>Lists</h1>
+                </div> */}
+                <section className="">
+                    <h1 className='text-xl border-b-2 p-4'>Stocks</h1>
                     <WatchListContainer />
-                    {Object.keys(stockData['bars'])}: {stockData['bars']['AAPL'][0]['o']}
+                    {/* {Object.keys(stockData['bars'])}: {stockData['bars']['AAPL'][0]['o']} */}
                 </section>
             </aside>
         </div>

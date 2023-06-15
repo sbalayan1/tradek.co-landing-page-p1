@@ -43,7 +43,7 @@ export default function PortfolioChart({ mockPortfolioData, initialData }: { moc
             </div>
             {/* client component */}
             <div className="flex flex-col justify-center h-[32rem]">
-                <PortfolioGraph data={subData} />
+                <PortfolioGraph data={subData} profit={stats.profit}/>
             </div>
             {/* client component */}
             <Timeframes selected={selected} updateSubData={updateSubData}/>

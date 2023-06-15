@@ -14,13 +14,32 @@ import { Line } from 'react-chartjs-2';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
-export const options = {
-    // responsive: true,
+const options = {
+    responsive: true,
     plugins: {
       title: {
         text: 'Chart.js Line Chart',
       },
+      legend: {
+        display: false
+      }
     },
+    legend: {
+      display: false
+    },
+    scales: {
+      x: {
+        ticks: {
+          display: false
+        }
+      },
+      y: {
+        ticks: {
+          display: false
+        }
+      }
+    }
+
 };
 
 
@@ -29,13 +48,14 @@ interface Profit {
     balance: number
 }
 
-export default function PortfolioGraph({ data }: { data: Profit[] }) {
+export default function PortfolioGraph({ data, profit }: { data: Profit[], profit: number }) {
+  const color = profit > 0 ? "#00FF00" : "#FF0000"
   const graphData = {
       labels: data.map(obj => obj.date.toLocaleDateString()),
       datasets: [{
           data: data.map(obj => obj.balance),
-          borderColor: '#FF0000',
-          backgroundColor: '#FF0000',
+          borderColor: color,
+          backgroundColor: color,
           pointStyle: false
       }]
   }
