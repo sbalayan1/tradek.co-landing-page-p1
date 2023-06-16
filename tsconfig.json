@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/loading.js", "src/app/MarketDataUtils/utils/getData.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/loading.js", "src/app/MarketDataUtils/utils/getData.js", "src/app/Dashboard/Components/CreateWatchList/CreateWatchListComponent.js"],
   "exclude": ["node_modules"]
 }

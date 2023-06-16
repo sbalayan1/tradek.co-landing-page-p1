@@ -76,8 +76,8 @@ export default function StockClientComponent({ stock, fetchedData }: { stock: st
     }
   
     return (
-        <div className="flex justify-between w-80">
-            <div className="w-56 flex justify-center ">
+        <div className="flex justify-evenly w-80">
+            <div className="w-2/3 flex justify-center ">
                 <Line options={options} data={graphData}/>
             </div>
             <div>

@@ -13,8 +13,6 @@ interface Profit {
 }
 
 export default function PortfolioChart({ mockPortfolioData, initialData }: { mockPortfolioData: Profit[], initialData: Profit[] }) {
-
-    console.count('rendering component')
     const data = useRef(mockPortfolioData)
     const [selected, setSelected] = useState("1m")
     const [subData, setSubData] = useState(initialData)

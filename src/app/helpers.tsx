@@ -35,7 +35,6 @@ const buildData = () => {
 
 
 const getSubData = (tgt: string, arr: Profit[]) => {
-    console.log('creating subdata')
     let res = arr.slice()
     if (tgt === "1d") res = arr.slice(-2)
     if (tgt === "1w") res = arr.slice(-7)
@@ -43,7 +42,6 @@ const getSubData = (tgt: string, arr: Profit[]) => {
     if (tgt === "3m") res = arr.slice(-90)
     if (tgt === "YTD") res = arr.slice(-266)
     if (tgt === "1y") res = arr.slice(-365)
-    console.log('done')
     return res
 }
 
