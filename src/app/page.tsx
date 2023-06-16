@@ -14,7 +14,7 @@ import PortfolioChart from "./Dashboard/PortfolioChart"
 import { getSubData, buildData } from "./helpers";
 import CreateWatchListComponent from "./Dashboard/Components/CreateWatchList/CreateWatchListComponent";
 import WatchListsContainer from "./Dashboard/WatchListsContainer";
-import { getData } from "./MarketDataUtils/getData";
+// import { getData } from "./MarketDataUtils/getStocks";
 
 interface Profit {
     date: Date
@@ -46,14 +46,7 @@ interface WatchList {
 export default async function Dashboard() {
     const mockPortfolioData: Profit[] = buildData()
     const initialData: Profit[] = getSubData("1m", mockPortfolioData)
-    const initialWatchList: WatchList[] = [
-        {
-            icon: '/next.svg',
-            name: 'Example 1',
-            stocks: ['TSLA', 'GME', 'AMC', 'AMD'],
-            isOpen: false
-        }
-    ]
+
 
     return (
         <div className="flex p-4 justify-center">
@@ -90,7 +83,7 @@ export default async function Dashboard() {
                         <h1 className='text-xl'>Stocks</h1>
                     </div>
                     <StocksContainer />
-                    <WatchListsContainer initialWatchList={initialWatchList}/>
+                    {/* <WatchListsContainer initialWatchList={initialWatchList}/> */}
                         {/* map over the initial watchlist and display an array of StocksContainers. When a watchlist changes or state and the initialWatchList are different, display state instead of children? */}
                 </section>
             </aside>

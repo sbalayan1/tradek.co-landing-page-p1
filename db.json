@@ -1,0 +1,24 @@
+{
+    "positions": ["AAPL", "TSLA", "QQQ", "SPY", "PLTR", "NVDA", "AI"],
+    "watchlists": [
+        {
+            "icon": "/next.svg",
+            "name": "Tech Stocks",
+            "stocks": ["TSLA", "GME", "AMC", "AMD"],
+            "isOpen": false
+        },
+        {
+            "icon": "/vercel.svg",
+            "name": "Meme Stocks",
+            "stocks": ["GME", "AMC"],
+            "isOpen": false
+        },
+        {
+            "icon": "/vercel.svg",
+            "name": "Bank Stocks",
+            "stocks": ["GS", "BAC", "WF", "JPM"],
+            "isOpen": false
+        }
+
+    ]
+}
