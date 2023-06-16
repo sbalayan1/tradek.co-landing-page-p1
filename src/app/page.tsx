@@ -2,17 +2,19 @@ import "server-only" // this is a server component. we don't need to use a layou
 
 import Articles from "./Dashboard/Components/Articles/Articles";
 import BuyingPower from "./Dashboard/Components/BuyingPower/BuyingPower";
-import PortfolioContainer from "./Dashboard/PortfolioContainer";
-import WatchListContainer from "./Dashboard/WatchListContainer";
+// import PortfolioContainer from "./Dashboard/test";
+import StocksContainer from "./Dashboard/StocksContainer";
 import PortfolioChart from "./Dashboard/PortfolioChart"
-import WatchListButton from "./Dashboard/Components/CreateWatchList/CreateWatchListButton";
+// import WatchListButton from "./Dashboard/Components/CreateWatchList/CreateWatchListButton";
 
 // helper functions for building trade data. we don't need to include these in the client component. instead we can instantiate them on the server and pass them to the client
 // import { getDat } from "./MarketDataUtils/getData";
 
-import { getData } from "./MarketDataUtils/getData";
+// import { getData } from "./MarketDataUtils/getData";
 import { getSubData, buildData } from "./helpers";
 import CreateWatchListComponent from "./Dashboard/Components/CreateWatchList/CreateWatchListComponent";
+import WatchListsContainer from "./Dashboard/WatchListsContainer";
+import { getData } from "./MarketDataUtils/getData";
 
 interface Profit {
     date: Date
@@ -34,10 +36,24 @@ interface Profit {
 //     [key: string]: Quote[]
 // }
 
+interface WatchList {
+    icon: string,
+    name: string,
+    stocks: string[],
+    isOpen: boolean
+}
 
 export default async function Dashboard() {
     const mockPortfolioData: Profit[] = buildData()
     const initialData: Profit[] = getSubData("1m", mockPortfolioData)
+    const initialWatchList: WatchList[] = [
+        {
+            icon: '/next.svg',
+            name: 'Example 1',
+            stocks: ['TSLA', 'GME', 'AMC', 'AMD'],
+            isOpen: false
+        }
+    ]
 
     return (
         <div className="flex p-4 justify-center">
@@ -73,11 +89,9 @@ export default async function Dashboard() {
                     <div className="flex justify-between border-b-2 text-xl p-4">
                         <h1 className='text-xl'>Stocks</h1>
                     </div>
-                    <WatchListContainer />
-                    <div className="flex justify-between p-4 border-t-2">
-                        <h1 className='text-xl'>Lists</h1>
-                        <CreateWatchListComponent />
-                    </div>
+                    <StocksContainer />
+                    <WatchListsContainer initialWatchList={initialWatchList}/>
+                        {/* map over the initial watchlist and display an array of StocksContainers. When a watchlist changes or state and the initialWatchList are different, display state instead of children? */}
                 </section>
             </aside>
         </div>

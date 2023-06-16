@@ -1,6 +1,6 @@
 import "server-only"
 import { getData } from "../MarketDataUtils/getData"
-import StockClientComponent from "./Components/Portfolio/StockClientComponent"
+import StockClientComponent from "./StockClientComponent"
 
 
 interface Quote {
@@ -24,7 +24,7 @@ interface MarketData {
     next_page_token: string
 }
 
-export default async function WatchListContainer() {
+export default async function StocksContainer() {
     const stocks = ['AAPL', 'TSLA', 'QQQ', 'SPY', 'PLTR', 'NVDA', 'AI'] // a users stocks can be fetched on the server. 
     const promises: Promise<MarketData>[] = stocks.map(stock => getData(stock)) // create an array of promises
     const data: MarketData[] = await Promise.all(promises) // fetch 1 minute performance over the entire day concurrently
