@@ -27,7 +27,6 @@ interface MarketData {
 
 export async function getAlpacaData(stock: string) {
   // if (!api_key || !secret_key) throw new Error('Input your API keys in the .env') commented out for now
-  "use server"
   const options = {
     method: 'GET',
     headers: {
@@ -49,7 +48,6 @@ export async function getAlpacaData(stock: string) {
 }
 
 export async function buildStockData(stocks: string[]): Promise<Stock[]> {
-  "use server"
   const promises: Promise<MarketData>[] = stocks.map((stock) => getAlpacaData(stock)) // create an array of promises
   const data: MarketData[] = await Promise.all(promises) // fetch 1 minute performance over the entire day concurrently
   const stockData: Stock[] = data.map(obj => obj.bars) // return an array of Stocks

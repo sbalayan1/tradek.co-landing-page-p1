@@ -70,7 +70,7 @@ export default function StockClientComponent({ stockName, stockData }: { stockNa
     }
   
     return (
-        <div className="flex justify-evenly w-80">
+        <div className="flex justify-evenly w-72">
             <div className="w-2/3 flex justify-center ">
                 <Line options={options} data={graphData}/>
             </div>

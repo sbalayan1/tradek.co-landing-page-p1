@@ -76,15 +76,15 @@ export default async function Dashboard() {
             </div>
 
             {/* this contains the users portfolio information such as current options/stocks/watchlists etc */}
-            <aside className="ml-2 ">
-                <section className="border-2">
+            <aside className="ml-2 border-2">
+                {/* <section className="border-2"> */}
                     <div className="flex justify-between border-b-2 text-xl p-4">
                         <h1 className='text-xl'>Stocks</h1>
                     </div>
                     <StocksContainer stocksData={stocksData} />
                     <WatchListsContainer />
                         {/* map over the initial watchlist and display an array of StocksContainers. When a watchlist changes or state and the initialWatchList are different, display state instead of children? */}
-                </section>
+                {/* </section> */}
             </aside>
         </div>
     )
