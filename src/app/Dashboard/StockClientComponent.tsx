@@ -53,8 +53,8 @@ interface Quote {
 }
 
 export default function StockClientComponent({ stockName, stockData }: { stockName: string, stockData: Quote[]}) {
-    const openPrice = stockData[0].c
-    const currentPrice = stockData[stockData.length-1].c
+    const openPrice = Number(stockData[0].c.toFixed(2)) // tofixed returns a string.
+    const currentPrice = Number(stockData[stockData.length-1].c.toFixed(2))
     const percentageChange: string = (((currentPrice - openPrice)/ openPrice) * 100).toFixed(2)
     const graphColor = parseFloat(percentageChange) > 0 ? true : false
     const color = graphColor ? "#00FF00" : "#FF0000"

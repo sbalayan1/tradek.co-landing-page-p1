@@ -1,8 +1,5 @@
-import "server-only"
+'use client'
 import StockClientComponent from "./StockClientComponent"
-import { getUserData } from "../UserDataUtils/getUserData"
-import { buildStockData } from "../MarketDataUtils/getStocks"
-
 
 interface Quote {
     t: string,
@@ -20,11 +17,7 @@ interface Stock {
 }
 
 
-export default async function StocksContainer() {
-    const stocks = await getUserData('positions')
-    const stocksData = await buildStockData(stocks)
-
-    {/* renders a list of server components with a nested client component */}
+export default function StocksContainer({ stocksData }: { stocksData: Stock[] }) {
     return (
         <div className="p-4">
             {stocksData.map((stock: Stock) => {

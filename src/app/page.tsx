@@ -31,21 +31,21 @@ interface Profit {
 //     vw: number
 // }
 
-// interface Stock {
-//     [key: string]: Quote[]
-// }
+interface Stock {
+    [key: string]: Quote[]
+}
 
 interface WatchList {
     icon: string,
     name: string,
     stocks: string[],
-    isOpen: boolean
 }
 
 export default async function Dashboard() {
     const mockPortfolioData: Profit[] = buildData()
     const initialData: Profit[] = getSubData("1m", mockPortfolioData)
-    const initialWatchList = await getUserData('watchlists')
+    const stocks: string[] = await getUserData('positions')
+    const stocksData: Stock[] = await buildStockData(stocks)
 
     return (
         <div className="flex p-4 justify-center">
@@ -81,8 +81,8 @@ export default async function Dashboard() {
                     <div className="flex justify-between border-b-2 text-xl p-4">
                         <h1 className='text-xl'>Stocks</h1>
                     </div>
-                    <StocksContainer />
-                    <WatchListsContainer initialWatchList={initialWatchList}/>
+                    <StocksContainer stocksData={stocksData} />
+                    <WatchListsContainer />
                         {/* map over the initial watchlist and display an array of StocksContainers. When a watchlist changes or state and the initialWatchList are different, display state instead of children? */}
                 </section>
             </aside>

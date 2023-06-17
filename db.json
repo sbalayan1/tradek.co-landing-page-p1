@@ -4,20 +4,17 @@
         {
             "icon": "/next.svg",
             "name": "Tech Stocks",
-            "stocks": ["TSLA", "GME", "AMC", "AMD"],
-            "isOpen": false
+            "stocks": ["TSLA", "GME", "AMC", "AMD"]
         },
         {
             "icon": "/vercel.svg",
             "name": "Meme Stocks",
-            "stocks": ["GME", "AMC"],
-            "isOpen": false
+            "stocks": ["GME", "AMC"]
         },
         {
             "icon": "/vercel.svg",
             "name": "Bank Stocks",
-            "stocks": ["GS", "BAC", "WF", "JPM"],
-            "isOpen": false
+            "stocks": ["GS", "BAC", "WF", "JPM"]
         }
 
     ]
