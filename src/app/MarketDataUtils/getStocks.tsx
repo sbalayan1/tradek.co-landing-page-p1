@@ -31,14 +31,15 @@ export async function getAlpacaData(stock: string) {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      'APCA-API-KEY-ID': 'insert api key',
-      'APCA-API-SECRET-KEY': 'insert api key',
-      cache: 'no-store'
+      'APCA-API-KEY-ID': 'PK7H5L487HMEI0TOC0DT',
+      'APCA-API-SECRET-KEY': 'RBJ0MUgBbo6edCFUT29LOJOnW1OYDrbemQZgExAv',
+      // cache: 'no-store'
     },
-    next: { revalidate: 60 }
+    // next: { revalidate: 60 }
   };
 
-  const res = await fetch(`https://data.alpaca.markets/v2/stocks/bars?symbols=${stock}&timeframe=1minute&limit=${24*60}&adjustment=raw`, options)
+  // note if you don't pass a start and end, the API defaults to the start of the CURRENT DAY. If there's no market data for that day, then you'll return an array of empty objects
+  const res = await fetch(`https://data.alpaca.markets/v2/stocks/bars?symbols=${stock}&timeframe=1minute&start=2023-06-16&end=2023-06-16&limit=${24*60}&adjustment=raw`, options)
   if (!res.ok) {
     throw new Error('Failed to fetch data') // this will activate the closest err.js error boundary
   }

@@ -52,13 +52,7 @@ interface Quote {
     vw: number // ?
 }
 
-interface Stock {
-    [key: string]: Quote[]
-}
-
-
-export default function StockClientComponent({ stock, fetchedData }: { stock: string, fetchedData: Stock}) {
-    const stockData = fetchedData[stock]
+export default function StockClientComponent({ stockName, stockData }: { stockName: string, stockData: Quote[]}) {
     const openPrice = stockData[0].c
     const currentPrice = stockData[stockData.length-1].c
     const percentageChange: string = (((currentPrice - openPrice)/ openPrice) * 100).toFixed(2)

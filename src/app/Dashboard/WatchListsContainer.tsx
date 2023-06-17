@@ -18,6 +18,7 @@ export default function WatchListsContainer({ initialWatchList }: { initialWatch
     const [watchLists, setWatchLists] = useState(initialWatchList)
 
     const handleDisplayWatchlist = (tgt: WatchList, setter: Function, idx: number) => {
+        console.log('firing')
         const copy: WatchList = {...tgt}
         copy.isOpen = !copy.isOpen
         setter((watchLists: WatchList[]) => {
