@@ -26,7 +26,7 @@ interface MarketData {
 }
 
 export async function getAlpacaData(stock: string) {
-  // if (!api_key || !secret_key) throw new Error('Input your API keys in the .env') commented out for now
+  if (!api_key || !secret_key) throw new Error('Input your API keys in the .env')
   const options = {
     method: 'GET',
     headers: {

@@ -83,7 +83,6 @@ export default async function Dashboard() {
                     </div>
                     <StocksContainer stocksData={stocksData} />
                     <WatchListsContainer />
-                        {/* map over the initial watchlist and display an array of StocksContainers. When a watchlist changes or state and the initialWatchList are different, display state instead of children? */}
                 {/* </section> */}
             </aside>
         </div>

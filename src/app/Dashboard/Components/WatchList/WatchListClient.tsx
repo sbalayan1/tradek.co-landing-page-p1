@@ -31,7 +31,7 @@ export default function WatchListClientComponent({ watchlist, watchListStocks }:
         <React.Fragment>
         <div key={watchlist.name} className="p-4">
             <div className="flex justify-between">
-                <div className="flex w-1/2 justify-evenly">
+                <div className="flex w-1/2 justify-evenly" onClick={() => setIsOpen(!isOpen)}>
                     <Image className="bg-white" src={watchlist.icon} alt="temp logo" height={30} width={30} />
                     <h1>{watchlist.name}</h1>
                 </div>

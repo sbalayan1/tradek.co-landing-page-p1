@@ -32,7 +32,6 @@ interface Stock {
 
 export default async function WatchListsContainer() {
     // // watchlists will be an array of watchlist names. each watchlist will contain an array of stock names
-    // const [watchLists, setWatchLists] = useState(initialWatchList)
     const initialWatchList: WatchList[] = await getUserData('watchlists')
 
     // iterate over watchlist array
