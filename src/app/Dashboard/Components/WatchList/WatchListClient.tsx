@@ -4,6 +4,7 @@ import Image from 'next/image'
 import StocksContainer from '../../StocksContainer'
 
 interface WatchList {
+    id: number,
     icon: string,
     name: string,
     stocks: string[],

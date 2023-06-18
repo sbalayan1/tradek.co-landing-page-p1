@@ -26,13 +26,13 @@ interface MarketData {
 }
 
 export async function getAlpacaData(stock: string) {
-  if (!api_key || !secret_key) throw new Error('Input your API keys in the .env')
+  // if (!api_key || !secret_key) throw new Error('Input your API keys in the .env')
   const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      'APCA-API-KEY-ID': 'insert api key',
-      'APCA-API-SECRET-KEY': 'insert api key',
+      'APCA-API-KEY-ID': '',
+      'APCA-API-SECRET-KEY': '',
       // cache: 'no-store'
     },
     // next: { revalidate: 60 }
@@ -48,6 +48,7 @@ export async function getAlpacaData(stock: string) {
 }
 
 export async function buildStockData(stocks: string[]): Promise<Stock[]> {
+  "use server"
   const promises: Promise<MarketData>[] = stocks.map((stock) => getAlpacaData(stock)) // create an array of promises
   const data: MarketData[] = await Promise.all(promises) // fetch 1 minute performance over the entire day concurrently
   const stockData: Stock[] = data.map(obj => obj.bars) // return an array of Stocks

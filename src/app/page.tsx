@@ -36,6 +36,7 @@ interface Stock {
 }
 
 interface WatchList {
+    id: number,
     icon: string,
     name: string,
     stocks: string[],
@@ -44,8 +45,23 @@ interface WatchList {
 export default async function Dashboard() {
     const mockPortfolioData: Profit[] = buildData()
     const initialData: Profit[] = getSubData("1m", mockPortfolioData)
-    const stocks: string[] = await getUserData('positions')
+
+    // fetch data concurrently
+    const watchListsPromise: Promise<WatchList[]> = getUserData('watchlists') 
+    const stocksPromise: Promise<string[]> = getUserData('positions')
+    const [watchLists, stocks] = await Promise.all([watchListsPromise, stocksPromise])
+
+    // this can be fixed*******
     const stocksData: Stock[] = await buildStockData(stocks)
+    const watchListsStocks: Stock[][] = await Promise.all(watchLists.map((watchList: WatchList) => buildStockData(watchList.stocks)))
+
+    // const [stocksData, watchListsStocks] = await Promise.all([await stocksDataPromise, watchListsDataPromise])
+
+    // iterate over watchlist array
+    // const promises: Promise<Stock[]>[] = initialWatchList.map((watchList: WatchList) => buildStockData(watchList.stocks)) // grab each stock array and pass to buildStockData
+    // const watchListsStocks: Stock[][] = await Promise.all(promises) // pass array of promises to Promise.all to fetch concurrently and set result to stockData
+
+   
 
     return (
         <div className="flex p-4 justify-center">
@@ -82,7 +98,7 @@ export default async function Dashboard() {
                         <h1 className='text-xl'>Stocks</h1>
                     </div>
                     <StocksContainer stocksData={stocksData} />
-                    <WatchListsContainer />
+                    <WatchListsContainer watchListsData={watchLists} watchListsStocksData={watchListsStocks} />
                 {/* </section> */}
             </aside>
         </div>
