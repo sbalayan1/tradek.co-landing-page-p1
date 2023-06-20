@@ -1,9 +1,9 @@
 "use client"
 import { useState } from 'react'
-import CreateWatchListComponent from "./Components/CreateWatchList/CreateWatchListComponent"
-import WatchListClientComponent from './Components/WatchList/WatchListClient'
-import { buildStockData } from "../MarketDataUtils/getStocks"
-import { postWatchListData } from '../UserDataUtils/userData'
+import CreateWatchListComponent from "../CreateWatchList/CreateWatchListComponent"
+import WatchListClientComponent from './WatchListClient'
+import { buildStockData } from "../../../MarketDataUtils/getStocks"
+import { postWatchListData } from '../../../UserDataUtils/userData'
 
 
 interface WatchList {
@@ -38,7 +38,7 @@ interface Stock {
 
 // note the above can be consolidate into one function so that our stocks array within watchlists alredy includes a key value for the data
 
-export default function WatchListsContainer({ watchListsData, watchListsStocksData }: { watchListsData: WatchList[], watchListsStocksData: Stock[][] }) {
+export default function WatchListsClientComponent({ watchListsData, watchListsStocksData }: { watchListsData: WatchList[], watchListsStocksData: Stock[][] }) {
     const [watchLists, setWatchLists] = useState(watchListsData)
     const [watchListsStocks, setWatchListsStocks] = useState(watchListsStocksData)
 

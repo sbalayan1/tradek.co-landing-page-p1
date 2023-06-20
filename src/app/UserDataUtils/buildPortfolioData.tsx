@@ -32,7 +32,6 @@ const buildData = () => {
     return result
 }
 
-
 const getSubData = (tgt: string, arr: Profit[]) => {
     let res = arr.slice()
     if (tgt === "1d") res = arr.slice(-2)

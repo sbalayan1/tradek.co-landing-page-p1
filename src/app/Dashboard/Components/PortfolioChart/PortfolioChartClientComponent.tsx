@@ -1,18 +1,18 @@
 "use client"
 import React, { useRef, useState } from 'react'
 
-import Timeframes from "./Components/PortfolioChart/Timeframes";
-import PortfolioGraph from './Components/PortfolioChart/PortfolioGraph';
+import Timeframes from "./Timeframes";
+import PortfolioGraph from './PortfolioGraph';
 
 // import helper functions
-import { getSubData, calculateProfit } from '../UserDataUtils/buildPortfolioData';
+import { getSubData, calculateProfit } from '../../../UserDataUtils/buildPortfolioData';
 
 interface Profit {
     date: Date
     balance: number
 }
 
-export default function PortfolioChart({ mockPortfolioData, initialData }: { mockPortfolioData: Profit[], initialData: Profit[] }) {
+export default function PortfolioChartClientComponent({ mockPortfolioData, initialData }: { mockPortfolioData: Profit[], initialData: Profit[] }) {
     const data = useRef(mockPortfolioData)
     const [selected, setSelected] = useState("1m")
     const [subData, setSubData] = useState(initialData)
