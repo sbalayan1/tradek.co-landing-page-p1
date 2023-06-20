@@ -2,17 +2,14 @@ import "server-only" // this is a server component. we don't need to use a layou
 
 import Articles from "./Dashboard/Components/Articles/Articles";
 import BuyingPower from "./Dashboard/Components/BuyingPower/BuyingPower";
-import StocksContainer from "./Dashboard/StocksContainer";
-import PortfolioChart from "./Dashboard/PortfolioChart"
+import StocksContainer from "./Dashboard/StocksClientComponent";
+import PortfolioChart from "./Dashboard/PortfolioChartClientComponent"
 
 // helper functions for building trade data. we don't need to include these in the client component. instead we can instantiate them on the server and pass them to the client
-// import { getDat } from "./MarketDataUtils/getData";
 
-// import { getData } from "./MarketDataUtils/getData";
-import { getSubData, buildData } from "./helpers";
-// import CreateWatchListComponent from "./Dashboard/Components/CreateWatchList/CreateWatchListComponent";
-import WatchListsContainer from "./Dashboard/WatchListsContainer";
-import { getUserData } from "./UserDataUtils/getUserData";
+import { getSubData, buildData } from "./UserDataUtils/buildPortfolioData";
+import WatchListsContainer from "./Dashboard/WatchListsClientComponent";
+import { getUserData } from "./UserDataUtils/userData";
 import { buildStockData, getAlpacaData } from "./MarketDataUtils/getStocks";
 
 interface Profit {
@@ -20,16 +17,16 @@ interface Profit {
     balance: number
 }
 
-// interface Quote {
-//     t: string,
-//     o: number,
-//     h: number,
-//     l: number,
-//     c: number,
-//     v: number,
-//     n: number
-//     vw: number
-// }
+interface Quote {
+    t: string,
+    o: number,
+    h: number,
+    l: number,
+    c: number,
+    v: number,
+    n: number
+    vw: number
+}
 
 interface Stock {
     [key: string]: Quote[]
@@ -47,21 +44,19 @@ export default async function Dashboard() {
     const initialData: Profit[] = getSubData("1m", mockPortfolioData)
 
     // fetch data concurrently
-    const watchListsPromise: Promise<WatchList[]> = getUserData('watchlists') 
-    const stocksPromise: Promise<string[]> = getUserData('positions')
-    const [watchLists, stocks] = await Promise.all([watchListsPromise, stocksPromise])
+    const userWatchLists: Promise<WatchList[]> = getUserData('watchlists') 
+    const userPositions: Promise<string[]> = getUserData('positions')
+    const [watchLists, stocks] = await Promise.all([userWatchLists, userPositions])
 
     // this can be fixed*******
-    const stocksData: Stock[] = await buildStockData(stocks)
-    const watchListsStocks: Stock[][] = await Promise.all(watchLists.map((watchList: WatchList) => buildStockData(watchList.stocks)))
+        // need to test performance using basic awaits or aggregating into a concurrent Promise.all
+    const stocksPromise: Promise<Stock[]> = buildStockData(stocks)
+    const watchListsPromise: Promise<Stock[]>[] = watchLists.map((watchList: WatchList) => buildStockData(watchList.stocks))
+    watchListsPromise.push(stocksPromise) // create an array of Promise<Stock[]>
+    const watchListsStocks = await Promise.all(watchListsPromise) // resolve concurrently and assign array to a variable
+    const stocksData = watchListsStocks.pop() // remove the last element which we pushed as a promise
 
-    // const [stocksData, watchListsStocks] = await Promise.all([await stocksDataPromise, watchListsDataPromise])
 
-    // iterate over watchlist array
-    // const promises: Promise<Stock[]>[] = initialWatchList.map((watchList: WatchList) => buildStockData(watchList.stocks)) // grab each stock array and pass to buildStockData
-    // const watchListsStocks: Stock[][] = await Promise.all(promises) // pass array of promises to Promise.all to fetch concurrently and set result to stockData
-
-   
 
     return (
         <div className="flex p-4 justify-center">

@@ -1,4 +1,4 @@
-import Timeframe from "./Timeframe-client"
+import Timeframe from "./TimeframeClient"
 
 export default function Timeframes({ selected, updateSubData }: { selected: string, updateSubData: Function } ) {
     const timeframes = ["1d", "1w", "1m", "3m", "YTD", "1y", "ALL"]

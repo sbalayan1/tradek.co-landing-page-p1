@@ -2,11 +2,8 @@
 import { useState } from 'react'
 import CreateWatchListComponent from "./Components/CreateWatchList/CreateWatchListComponent"
 import WatchListClientComponent from './Components/WatchList/WatchListClient'
-// import WatchListClientComponent from "./WatchListClient"
-// import WatchListClientComponent from './Components/WatchList/WatchListsClient'
-import { getUserData } from "../UserDataUtils/getUserData"
 import { buildStockData } from "../MarketDataUtils/getStocks"
-import { postWatchListData } from '../UserDataUtils/postWatchListData'
+import { postWatchListData } from '../UserDataUtils/userData'
 
 
 interface WatchList {

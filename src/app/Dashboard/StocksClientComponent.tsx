@@ -1,5 +1,5 @@
 'use client'
-import StockClientComponent from "./StockClientComponent"
+import StockClientComponent from "./Components/Stocks/StockClientComponent"
 
 interface Quote {
     t: string,

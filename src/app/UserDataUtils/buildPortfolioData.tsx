@@ -3,7 +3,6 @@ interface Profit {
     balance: number
 }
 
-
 const createProfitLoss = (balance: number) => {
     const direction = Math.random()
     const amount = Math.floor(Math.random() * 100)

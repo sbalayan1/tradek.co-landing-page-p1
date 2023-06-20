@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import Image from 'next/image'
-import StocksContainer from '../../StocksContainer'
+import StocksContainer from '../../StocksClientComponent'
 
 interface WatchList {
     id: number,

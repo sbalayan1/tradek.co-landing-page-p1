@@ -5,7 +5,7 @@ import Timeframes from "./Components/PortfolioChart/Timeframes";
 import PortfolioGraph from './Components/PortfolioChart/PortfolioGraph';
 
 // import helper functions
-import { getSubData, calculateProfit } from '../helpers';
+import { getSubData, calculateProfit } from '../UserDataUtils/buildPortfolioData';
 
 interface Profit {
     date: Date
