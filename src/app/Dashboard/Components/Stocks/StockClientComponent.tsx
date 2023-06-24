@@ -41,16 +41,7 @@ const options = {
       }
 };
 
-interface Quote {
-    t: string, // time
-    o: number, // open
-    h: number, // high
-    l: number, // low
-    c: number, // close
-    v: number, // volume
-    n: number // ? 
-    vw: number // ?
-}
+import { Quote } from '@/app/globalInterfaces';
 
 export default function StockClientComponent({ stockName, stockData }: { stockName: string, stockData: Quote[]}) {
     const openPrice = Number(stockData[0].c.toFixed(2)) // tofixed returns a string.

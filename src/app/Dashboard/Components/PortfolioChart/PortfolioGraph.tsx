@@ -42,11 +42,8 @@ const options = {
 
 };
 
+import { Profit } from '@/app/globalInterfaces'
 
-interface Profit {
-    date: Date
-    balance: number
-}
 
 export default function PortfolioGraph({ data, profit }: { data: Profit[], profit: number }) {
   const color = profit > 0 ? "#00FF00" : "#FF0000"

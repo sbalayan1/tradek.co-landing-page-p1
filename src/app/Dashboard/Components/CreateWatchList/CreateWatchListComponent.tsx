@@ -14,13 +14,6 @@ interface Modals {
     [key: string]: boolean
 }
 
-// interface WatchList {
-//     id: number,
-//     name: string,
-//     icon: string,
-//     stocks: string[]
-// }
-
 
 export default function CreateWatchListComponent({ addWatchList }: { addWatchList: Function}) {
     const [modals, setModals] = useState({

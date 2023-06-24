@@ -12,25 +12,8 @@ import { getSubData, buildData } from "./UserDataUtils/buildPortfolioData";
 import { getUserData } from "./UserDataUtils/userData";
 import { buildStockData } from "./MarketDataUtils/getStocks";
 
-interface Profit {
-    date: Date
-    balance: number
-}
+import { Profit, Stock } from './globalInterfaces'
 
-interface Quote {
-    t: string,
-    o: number,
-    h: number,
-    l: number,
-    c: number,
-    v: number,
-    n: number
-    vw: number
-}
-
-interface Stock {
-    [key: string]: Quote[]
-}
 
 export default async function Dashboard() {
     const mockPortfolioData: Profit[] = buildData()
