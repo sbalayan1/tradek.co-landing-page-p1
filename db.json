@@ -1,0 +1,55 @@
+{
+  "positions": [
+    "AAPL",
+    "TSLA",
+    "QQQ",
+    "SPY",
+    "PLTR",
+    "NVDA",
+    "AI"
+  ],
+  "watchlists": [
+    {
+      "id": 1,
+      "icon": "/next.svg",
+      "name": "Tech Stocks",
+      "stocks": [
+        "TSLA",
+        "GME",
+        "AMC",
+        "AMD"
+      ]
+    },
+    {
+      "id": 2,
+      "icon": "/vercel.svg",
+      "name": "Meme Stocks",
+      "stocks": [
+        "GME",
+        "AMC"
+      ]
+    },
+    {
+      "id": 3,
+      "icon": "/vercel.svg",
+      "name": "Bank Stocks",
+      "stocks": [
+        "GS",
+        "BAC",
+        "WF",
+        "JPM"
+      ]
+    },
+    {
+      "name": "FAANG",
+      "icon": "/next.svg",
+      "stocks": [
+        "msft",
+        "googl",
+        "meta",
+        "amzn"
+      ],
+      "id": 4
+    }
+  ]
+}
