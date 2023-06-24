@@ -3,27 +3,8 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import StocksContainer from '../Stocks/StocksClientComponent'
 
-interface WatchList {
-    id: number,
-    icon: string,
-    name: string,
-    stocks: string[],
-}
+import { WatchList, Stock } from '@/app/globalInterfaces'
 
-interface Quote {
-    t: string,
-    o: number,
-    h: number,
-    l: number,
-    c: number,
-    v: number,
-    n: number
-    vw: number
-}
-
-interface Stock {
-    [key: string]: Quote[]
-}
 
 export default function WatchListClientComponent({ watchlist, watchListStocks }: { watchlist: WatchList, watchListStocks: Stock[] }) {
     const [isOpen, setIsOpen] = useState(false)

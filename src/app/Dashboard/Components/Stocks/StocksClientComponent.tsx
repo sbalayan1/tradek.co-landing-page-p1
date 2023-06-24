@@ -1,20 +1,7 @@
 'use client'
 import StockClientComponent from "./StockClientComponent"
 
-interface Quote {
-    t: string,
-    o: number,
-    h: number,
-    l: number,
-    c: number,
-    v: number,
-    n: number
-    vw: number
-}
-
-interface Stock {
-    [key: string]: Quote[]
-}
+import { Stock } from "@/app/globalInterfaces"
 
 // needs to be a client component so that we can pass in specific stockData and render for our watchLists component
 export default function StocksClientComponent({ stocksData }: { stocksData: Stock[] }) {

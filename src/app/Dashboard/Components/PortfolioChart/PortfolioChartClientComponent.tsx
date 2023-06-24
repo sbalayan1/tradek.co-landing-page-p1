@@ -7,10 +7,8 @@ import PortfolioGraph from './PortfolioGraph';
 // import helper functions
 import { getSubData, calculateProfit } from '../../../UserDataUtils/buildPortfolioData';
 
-interface Profit {
-    date: Date
-    balance: number
-}
+import { Profit } from '@/app/globalInterfaces';
+
 
 export default function PortfolioChartClientComponent({ mockPortfolioData, initialData }: { mockPortfolioData: Profit[], initialData: Profit[] }) {
     const data = useRef(mockPortfolioData)

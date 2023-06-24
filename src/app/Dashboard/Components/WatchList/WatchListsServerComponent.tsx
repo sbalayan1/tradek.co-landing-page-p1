@@ -3,27 +3,8 @@ import WatchListsClientComponent from "./WatchListsClientComponent"
 import { getUserData } from "../../../UserDataUtils/userData"
 import { buildStockData } from "../../../MarketDataUtils/getStocks"
 
-interface Quote {
-    t: string,
-    o: number,
-    h: number,
-    l: number,
-    c: number,
-    v: number,
-    n: number
-    vw: number
-}
+import { WatchList, Stock } from '@/app/globalInterfaces'
 
-interface Stock {
-    [key: string]: Quote[]
-}
-
-interface WatchList {
-    id: number,
-    icon: string,
-    name: string,
-    stocks: string[],
-}
 
 export default async function WatchListsServerComponent() {
     const userWatchLists: WatchList[] = await getUserData('watchlists')

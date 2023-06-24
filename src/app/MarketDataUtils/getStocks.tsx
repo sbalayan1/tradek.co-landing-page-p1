@@ -1,30 +1,10 @@
 "use server"
-import { requestToBodyStream } from "next/dist/server/body-streams"
 import "server-only"
 
 const api_key = process.env.API_KEY 
 const secret_key = process.env.API_SECRET_KEY 
 
-interface Quote {
-  t: string,
-  o: number,
-  h: number,
-  l: number,
-  c: number,
-  v: number,
-  n: number
-  vw: number
-}
-
-interface Stock {
-  [key: string]: Quote[]
-}
-
-
-interface MarketData {
-  bars: Stock,
-  next_page_token: string
-}
+import { Stock, MarketData } from '@/app/globalInterfaces'
 
 function createDateString() {
   // sunday: 0, monday: 1, tuesday: 2, ... saturday: 6

@@ -6,28 +6,8 @@ import { buildStockData } from "../../../MarketDataUtils/getStocks"
 import { postWatchListData } from '../../../UserDataUtils/userData'
 
 
-interface WatchList {
-    id: number,
-    icon: string,
-    name: string,
-    stocks: string[],
-}
+import { WatchList, Stock } from '@/app/globalInterfaces'
 
-interface Quote {
-    t: string,
-    o: number,
-    h: number,
-    l: number,
-    c: number,
-    v: number,
-    n: number
-    vw: number
-}
-
-
-interface Stock {
-    [key: string]: Quote[]
-}
 
 // data is fetched on the server on the pages initial render and is passed into the client component
 // data is used to hydrate initial state
