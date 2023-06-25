@@ -34,8 +34,8 @@ export default function PortfolioChartClientComponent({ mockPortfolioData, initi
         <div className="mb-2">
             {/* Client component */}
             <div className="text-2xl">
-                <h1 className={`${stats.profit > 0 ? "text-green-500" : "text-red-500"}`}>${stats.profit} in {selected}</h1>
-                <h3 className={`${stats.profit > 0 ? "text-green-500" : "text-red-500"}`}>{stats.percentageChange}% in {selected}</h3>
+                <h1 className={`${stats.profit > 0 ? "text-green" : "text-red"}`}>${stats.profit} in {selected}</h1>
+                <h3 className={`${stats.profit > 0 ? "text-green" : "text-red"}`}>{stats.percentageChange}% in {selected}</h3>
             </div>
             {/* client component */}
             <div className="flex flex-col justify-center h-[32rem]">
