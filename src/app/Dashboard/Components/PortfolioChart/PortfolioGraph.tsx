@@ -15,31 +15,42 @@ import { Line } from 'react-chartjs-2';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
 const options = {
-    responsive: true,
-    plugins: {
-      title: {
-        text: 'Chart.js Line Chart',
-      },
-      legend: {
-        display: false
-      }
+  responsive: true,
+  plugins: {
+    title: {
+      text: 'Chart.js Line Chart',
     },
     legend: {
       display: false
+    }
+  },
+  legend: {
+      display: false
     },
-    scales: {
-      x: {
-        ticks: {
-          display: false
-        }
+  scales: {
+    x: {
+      border: {
+        display: false
       },
-      y: {
-        ticks: {
-          display: false
-        }
+      grid: {
+        display: false
+      },
+      ticks: {
+        display: false
+      }
+    },
+    y: {
+      border: {
+        display: false
+      },
+      grid: {
+        display: false
+      },
+      ticks: {
+        display: false
       }
     }
-
+  }
 };
 
 import { Profit } from '@/app/globalInterfaces'

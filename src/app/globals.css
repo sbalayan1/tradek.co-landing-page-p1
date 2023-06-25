@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  color: white;
-  background: black
+@layer base {
+  body {
+    color: theme('colors.white');
+    background-color: theme('colors.black');
+  }
 }
