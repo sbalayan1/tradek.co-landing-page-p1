@@ -5,12 +5,21 @@ import BuyingPower from "./Dashboard/Components/BuyingPower/BuyingPower";
 
 
 export default function Loading() {
-    const stockLayouts = Array(5).fill(0).map(elem => {
-        return (
-            <div key={elem} className="flex justify-evenly w-full h-[5rem] bg-gray-900 border-[1px] animate-pulse">
-            </div>
-        )
-    })
+    function stockLayouts(size: number) { 
+        return Array(size).fill(0).map(elem => {
+            return (
+                <div key={elem} className="flex justify-between w-full h-[5rem] border-[1px] animate-pulse p-4">
+                    <div className="bg-gray-900 rounded-md w-1/5 h-full border-2"></div>
+                    <div className="flex justify-center w-2/5 h-full bg-gray-900 rounded-md">
+                    </div>
+                    <div className="w-1/5 h-full flex flex-col justify-evenly">
+                        <div className="h-2/5 w-full bg-gray-900 border-2 rounded-md"></div>
+                        <div className="h-2/5 w-full bg-gray-900 border-2 rounded-md"></div>
+                    </div>
+                </div>
+            )
+        })
+    }
 
     return (
         <div className="flex justify-center">
@@ -39,10 +48,11 @@ export default function Loading() {
                     <div className="flex justify-between border-b-2 text-xl p-4">
                         <h1 className='text-xl'>Stocks</h1>
                     </div>
-                    {stockLayouts}
+                    {stockLayouts(5)}
                     <div className="flex justify-between border-b-2 text-xl p-4">
                         <h1 className='text-xl'>Lists</h1>
                     </div>
+                    {stockLayouts(5)}
                 </aside>
             </div>
         </div>

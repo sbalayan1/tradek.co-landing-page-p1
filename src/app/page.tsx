@@ -13,6 +13,7 @@ import { getUserData } from "./UserDataUtils/userData";
 import { buildStockData } from "./MarketDataUtils/getStocks";
 
 import { Profit, Stock } from './globalInterfaces'
+import Loading from "./loading";
 
 
 export default async function Dashboard() {
@@ -22,6 +23,7 @@ export default async function Dashboard() {
     const stocksData: Stock[] = await buildStockData(stocks) 
 
     return (
+        // <Loading />
         <div className="flex p-4 justify-center">
             {/* This div should be a column with multiple sections*/}
             <div className='p-4 w-1/2'> 

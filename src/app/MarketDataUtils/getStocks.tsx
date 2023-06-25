@@ -17,13 +17,13 @@ function createDateString() {
 }
 
 export async function getAlpacaData(stock: string) {
-  // if (!api_key || !secret_key) throw new Error('Input your API keys in the .env')
+  if (!api_key || !secret_key) throw new Error('Input your API keys in the .env')
   const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      'APCA-API-KEY-ID': '',
-      'APCA-API-SECRET-KEY': '',
+      'APCA-API-KEY-ID': api_key,
+      'APCA-API-SECRET-KEY': secret_key,
     },
   };
 
