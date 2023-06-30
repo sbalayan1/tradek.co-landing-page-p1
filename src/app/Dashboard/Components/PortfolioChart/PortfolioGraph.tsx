@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
+
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
 const options = {
@@ -57,7 +58,7 @@ import { Profit } from '@/app/globalInterfaces'
 
 
 export default function PortfolioGraph({ data, profit }: { data: Profit[], profit: number }) {
-  const color = profit > 0 ? "#00FF00" : "#FF0000"
+  const color = profit > 0 ?  '#4A8532': '#B80300'
   const graphData = {
       labels: data.map(obj => obj.date.toLocaleDateString()),
       datasets: [{
