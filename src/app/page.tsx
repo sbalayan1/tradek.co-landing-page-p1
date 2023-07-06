@@ -13,8 +13,7 @@ import { getUserData } from "./UserDataUtils/userData";
 import { buildStockData } from "./MarketDataUtils/getStocks";
 
 import { Profit, Stock } from './globalInterfaces'
-import Loading from "./loading";
-
+import DiscoverMoreClientComponent from "./Dashboard/Components/DiscoverMore/DiscoverMoreClientComponent";
 
 export default async function Dashboard() {
     const mockPortfolioData: Profit[] = buildData()
@@ -37,8 +36,9 @@ export default async function Dashboard() {
                 {/* this div contains the articles/notifications sent from rh.  */}
                 <Articles />
 
-                <section>
-                    <h1 className='text-xl'>Discover more</h1>
+                <section className="mt-10">
+                    <h1 className='text-xl border-b p-4'>Discover more</h1>
+										<DiscoverMoreClientComponent />
                 </section>
 
                 <section>
@@ -58,8 +58,9 @@ export default async function Dashboard() {
                         <h1 className='text-xl'>Stocks</h1>
                     </div>
                     <StocksClientComponent stocksData={stocksData} />
-                    <Suspense fallback={<p>Loading...</p>}>                    
-                        <WatchListsServerComponent />
+                    <Suspense fallback={<p>Loading...</p>}>
+											{/* the below breaks if there is no server running  */}
+                        <WatchListsServerComponent /> 
                     </Suspense>
 
             </aside>

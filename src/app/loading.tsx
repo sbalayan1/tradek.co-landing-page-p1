@@ -6,9 +6,9 @@ import BuyingPower from "./Dashboard/Components/BuyingPower/BuyingPower";
 
 export default function Loading() {
     function stockLayouts(size: number) { 
-        return Array(size).fill(0).map(elem => {
+        return Array(size).fill(0).map((elem, idx) => {
             return (
-                <div key={elem} className="flex justify-between w-full h-[5rem] border-[1px] animate-pulse p-4">
+                <div key={idx} className="flex justify-between w-full h-[5rem] border-[1px] animate-pulse p-4">
                     <div className="bg-gray-900 rounded-md w-1/5 h-full border-2"></div>
                     <div className="flex justify-center w-2/5 h-full bg-gray-900 rounded-md">
                     </div>
