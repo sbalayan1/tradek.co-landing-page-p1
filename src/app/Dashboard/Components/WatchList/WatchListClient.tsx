@@ -11,18 +11,16 @@ export default function WatchListClientComponent({ watchlist, watchListStocks }:
 
     return (
         <React.Fragment>
-        <div key={watchlist.name} className="p-4">
-            <div className="flex justify-between">
-                <div className="flex w-1/2 justify-evenly" onClick={() => setIsOpen(!isOpen)}>
-                    <Image className="bg-white" src={watchlist.icon} alt="temp logo" height={30} width={30} />
-                    <h1>{watchlist.name}</h1>
-                </div>
-                <button onClick={() => setIsOpen(!isOpen)}>
-                    {isOpen ? '-': '+'}
-                </button>
-            </div>
-        </div>
-        {isOpen && <StocksContainer stocksData={watchListStocks}/>}
+					<div key={watchlist.name} className="p-4">
+							<div className="flex justify-between">
+									<div className="flex w-1/2" onClick={() => setIsOpen(!isOpen)}>
+											<Image className="bg-white" src={watchlist.icon} alt="temp logo" height={30} width={30} />
+											<h1 className="ml-4">{watchlist.name}</h1>
+									</div>
+									<button onClick={() => setIsOpen(!isOpen)}>{isOpen ? '-': '+'}</button>
+							</div>
+					</div>
+					{isOpen && <StocksContainer stocksData={watchListStocks}/>}
         </React.Fragment>
     )
 }

@@ -61,7 +61,7 @@ export default function Articles() {
 
     return (
         <div className="w-full">
-            <div className="border-2">{articleToDisplay}</div>
+            <div className="border">{articleToDisplay}</div>
             <div className="w-full flex justify-center p-2">
                 <div className="w-1/6 flex justify-between">
                     <button onClick={() => handleDir("left")}>{'<'}</button>

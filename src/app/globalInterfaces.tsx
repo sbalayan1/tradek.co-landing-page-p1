@@ -31,4 +31,10 @@ interface WatchList {
     stocks: string[],
 }
 
-export type { Profit, Quote, Stock, MarketData, WatchList }
+interface DiscoverMoreData {
+	title: string,
+	img: string,
+	description: string
+}
+
+export type { Profit, Quote, Stock, MarketData, WatchList, DiscoverMoreData }

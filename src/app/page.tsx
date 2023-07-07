@@ -21,6 +21,40 @@ export default async function Dashboard() {
     const stocks = await getUserData('positions')
     const stocksData: Stock[] = await buildStockData(stocks) 
 
+		const discoverMoreImages = ['/vercel.svg', '/next.svg', '/icons8-feather-50.png']
+		const discoverMoreTitles = [
+			'Transfer accounts in',
+			'Robinhood Gold',
+			'Lend your stocks',
+			'Retirement',
+			'Reinvest dividends',
+			'Recurring',
+			'Earn up to 4.65% APY',
+			'Crypto',
+			'ETFs'
+		]
+		const discoverMoreDescriptions = [
+			'Consolidate assets',
+			'Get premium perks',
+			'Potential to earn',
+			'Get a 1% match',
+			'Build investing habits',
+			'Invest on a schedule',
+			'On uninvested cash',
+			'Browse coins'
+		]
+
+		const discoverMoreData = discoverMoreTitles.map((title, idx) => {
+			const randomIdx = Math.floor(Math.random()*2)
+			return (
+				{
+					title: title,
+					description: discoverMoreDescriptions[idx],
+					img: discoverMoreImages[randomIdx]
+				}
+			)
+		})
+
     return (
         // <Loading />
         <div className="flex p-4 justify-center">
@@ -38,7 +72,7 @@ export default async function Dashboard() {
 
                 <section className="mt-10">
                     <h1 className='text-xl border-b p-4'>Discover more</h1>
-										<DiscoverMoreClientComponent />
+										<DiscoverMoreClientComponent data={discoverMoreData}/>
                 </section>
 
                 <section>
@@ -52,17 +86,12 @@ export default async function Dashboard() {
             </div>
 
             {/* this contains the users portfolio information such as current options/stocks/watchlists etc */}
-            <aside className="ml-2 border-2">
-                {/* <section className="border-2"> */}
+            <aside className="ml-2 border h-full">
                     <div className="flex justify-between border-b-2 text-xl p-4">
                         <h1 className='text-xl'>Stocks</h1>
                     </div>
                     <StocksClientComponent stocksData={stocksData} />
-                    <Suspense fallback={<p>Loading...</p>}>
-											{/* the below breaks if there is no server running  */}
-                        <WatchListsServerComponent /> 
-                    </Suspense>
-
+										<WatchListsServerComponent /> 
             </aside>
         </div>
     )

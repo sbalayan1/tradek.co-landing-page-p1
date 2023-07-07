@@ -31,13 +31,11 @@ export default function WatchListsClientComponent({ watchListsData, watchListsSt
 
     return (
         <div>
-             <div className="flex justify-between p-4 border-2">
+             <div className="flex justify-between p-4 border-t border-b">
                 <h1 className='text-xl'>Lists</h1>
                 <CreateWatchListComponent addWatchList={addWatchList} />
             </div>
-                {watchLists.map((watchlist, idx) => <WatchListClientComponent key={idx} watchlist={watchlist} watchListStocks={watchListsStocks[idx]} />)}
-
-            {/* within each render, we'll have a ternary that displays the watchlist's stocks as well as an isOpen state for opening and closing the watchlist*/}
+            {watchLists.map((watchlist, idx) => <WatchListClientComponent key={idx} watchlist={watchlist} watchListStocks={watchListsStocks[idx]} />)}
         </div>
     )
 }
