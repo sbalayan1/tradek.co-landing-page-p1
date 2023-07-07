@@ -19,8 +19,9 @@ import NewsArticlesClient from "./Dashboard/Components/NewsArticles/NewsArticles
 export default async function Dashboard() {
     const mockPortfolioData: Profit[] = buildData()
     const initialData: Profit[] = getSubData("1m", mockPortfolioData)
-    const stocks = await getUserData('positions')
-    const stocksData: Stock[] = await buildStockData(stocks) 
+		const userStocks: string[] = await getUserData('positions')
+    const userStocksData: Stock[] = await buildStockData(userStocks) 
+
 
 		const discoverMoreImages = ['/vercel.svg', '/next.svg', '/icons8-feather-50.png']
 		const discoverMoreTitles = [
@@ -90,7 +91,7 @@ export default async function Dashboard() {
 							<div className="flex justify-between border-b-2 text-xl p-4">
 									<h1 className='text-xl'>Stocks</h1>
 							</div>
-							<StocksClientComponent stocksData={stocksData} />
+							<StocksClientComponent stocksData={userStocksData} />
 							<WatchListsServerComponent /> 
             </aside>
         </div>

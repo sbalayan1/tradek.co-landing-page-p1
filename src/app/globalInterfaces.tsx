@@ -39,7 +39,6 @@ interface DiscoverMoreData {
 
 
 // news article interfaces
-
 interface NewsImage {
 	size: string,
 	url: string
@@ -63,4 +62,23 @@ interface News {
 	news: Article[]
 }
 
-export type { Profit, Quote, Stock, MarketData, WatchList, DiscoverMoreData, News, Article }
+
+// assets interfaces
+interface Asset {
+	id: string,
+	class: string,
+	exchange: string,
+	symbol: string,
+	name: string,
+	status: string,
+	tradable: boolean,
+	marginable: boolean,
+	maintenance_margin_requirement: number,
+	shortable: boolean,
+	easy_to_borrow: boolean,
+	fractionable: boolean,
+	attributes: [],
+	[key: string]: any
+}
+
+export type { Profit, Quote, Stock, MarketData, WatchList, DiscoverMoreData, News, Article, Asset }
