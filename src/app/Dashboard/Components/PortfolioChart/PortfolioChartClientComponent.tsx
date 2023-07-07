@@ -5,7 +5,7 @@ import Timeframes from "./Timeframes";
 import PortfolioGraph from './PortfolioGraph';
 
 // import helper functions
-import { getSubData, calculateProfit } from '../../../UserDataUtils/buildPortfolioData';
+import { getSubData, calculateProfit } from '../../../utils/UserDataUtils/buildPortfolioData';
 
 import { Profit } from '@/app/globalInterfaces';
 
@@ -38,7 +38,7 @@ export default function PortfolioChartClientComponent({ mockPortfolioData, initi
                 <h3 className={`${stats.profit > 0 ? "text-green" : "text-red"}`}>{stats.percentageChange}% in {selected}</h3>
             </div>
             {/* client component */}
-            <div className="flex flex-col justify-center h-[32rem] w-full">
+            <div className="flex flex-col justify-center h-[22rem] w-full">
                 <PortfolioGraph data={subData} profit={stats.profit}/>
             </div>
             {/* client component */}

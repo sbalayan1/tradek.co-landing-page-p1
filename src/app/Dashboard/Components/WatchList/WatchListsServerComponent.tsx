@@ -1,7 +1,7 @@
 // this component wraps the WatchListsClientComponent so that we can use streaming 
 import WatchListsClientComponent from "./WatchListsClientComponent"
-import { getUserData } from "../../../UserDataUtils/userData"
-import { buildStockData } from "../../../MarketDataUtils/getStocks"
+import { getUserData } from "../../../utils/UserDataUtils/userData"
+import { buildStockData } from "../../../utils/MarketDataUtils/getStocks"
 
 import { WatchList, Stock } from '@/app/globalInterfaces'
 

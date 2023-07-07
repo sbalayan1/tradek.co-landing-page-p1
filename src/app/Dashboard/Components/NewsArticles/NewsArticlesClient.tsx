@@ -1,26 +1,25 @@
-'use client'
-import React from 'react'
-import Image from 'next/image'
+import { getUserData } from '../../../utils/UserDataUtils/userData'
+import { getLatestNews } from '@/app/utils/MarketDataUtils/getLatestNews'
+import { News, WatchList } from '../../../globalInterfaces'
+import NewsArticleClient from './NewsArticleClient'
 
-import { Article } from '../../../globalInterfaces'
-
-export default function NewsArticlesClient({ data }: { data: Article[] }) {
-		const newsArticlesToDisplay = data.map(article => {
-			return (
-				<li key={article.id} className="flex w-full h-40 justify-between p-4 border-b items-center">
-					<div className="mr-8 h-full flex flex-col justify-evenly">
-						<h2>{article.source} {article.updated_at}</h2>
-						<p className="text-xs">{article.headline}</p>
-						{article.symbols.length > 0 && 
-							<ul className="flex text-xs">
-								{article.symbols.map(symbol => <li className="mr-2" key={symbol}>{symbol}</li>)}
-							</ul>
-						}
-					</div>
-					<Image className="w-1/6 h-4/5 rounded-md" src={article.images[0].url} alt={article.headline} height={96} width={96}/>
-				</li>
-			)
+export default async function NewsArticlesClient() {
+	const userPositions: Promise<string[]> = getUserData('positions')
+	const userWatchLists: Promise<WatchList[]> = getUserData('watchlists')
+	const userData: [string[], WatchList[]] = await Promise.all([userPositions, userWatchLists])
+	const userStocks: Set<string> = new Set()
+	userData[0].forEach(stock => userStocks.add(stock)) // iterate through positions and add to set
+	
+	// iterate through watchlists. Add each stock to the set within each stocks list
+	userData[1].forEach(watchlistObj => {
+		watchlistObj.stocks.forEach(stock => {
+			userStocks.add(stock)
 		})
+	})
+
+	const res: string[] = [...userStocks] // spread set into an array
+	const data: News = await getLatestNews(res)
+	const newsArticlesToDisplay = data.news.map(article => <NewsArticleClient key={article.id} article={article}/>)
 
 	return (
 		<ul className="w-full">

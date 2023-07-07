@@ -29,6 +29,7 @@ export async function getAlpacaData(stock: string) {
 
   const dateString = createDateString()
   const tgtString = `https://data.alpaca.markets/v2/stocks/bars?symbols=${stock}&timeframe=1min&start=${dateString}&limit=${24*60}&adjustment=raw`
+	
   // note if you don't pass a start and end, the API defaults to the start of the CURRENT DAY. If there's no market data for that day, then you'll return an array of empty objects
   const res = await fetch(tgtString, options)
   if (!res.ok) {

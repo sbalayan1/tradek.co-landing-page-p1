@@ -2,8 +2,8 @@
 import { useState } from 'react'
 import CreateWatchListComponent from "../CreateWatchList/CreateWatchListComponent"
 import WatchListClientComponent from './WatchListClient'
-import { buildStockData } from "../../../MarketDataUtils/getStocks"
-import { postWatchListData } from '../../../UserDataUtils/userData'
+import { buildStockData } from "../../../utils/MarketDataUtils/getStocks"
+import { postWatchListData } from '../../../utils/UserDataUtils/userData'
 
 
 import { WatchList, Stock } from '@/app/globalInterfaces'

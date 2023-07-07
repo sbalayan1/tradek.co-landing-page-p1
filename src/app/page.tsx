@@ -8,12 +8,11 @@ import PortfolioChartClientComponent from "./Dashboard/Components/PortfolioChart
 import WatchListsServerComponent from "./Dashboard/Components/WatchList/WatchListsServerComponent";
 
 // helper functions for building trade data. we don't need to include these in the client component. instead we can instantiate them on the server and pass them to the client
-import { getSubData, buildData } from "./UserDataUtils/buildPortfolioData";
-import { getUserData } from "./UserDataUtils/userData";
-import { buildStockData } from "./MarketDataUtils/getStocks";
-import { getLatestNews } from './MarketDataUtils/getLatestNews'
+import { getSubData, buildData } from "./utils/UserDataUtils/buildPortfolioData";
+import { getUserData } from "./utils/UserDataUtils/userData";
+import { buildStockData } from "./utils/MarketDataUtils/getStocks";
 
-import { News, Profit, Stock } from './globalInterfaces'
+import { Profit, Stock } from './globalInterfaces'
 import DiscoverMoreClientComponent from "./Dashboard/Components/DiscoverMore/DiscoverMoreClientComponent";
 import NewsArticlesClient from "./Dashboard/Components/NewsArticles/NewsArticlesClient";
 
@@ -22,8 +21,6 @@ export default async function Dashboard() {
     const initialData: Profit[] = getSubData("1m", mockPortfolioData)
     const stocks = await getUserData('positions')
     const stocksData: Stock[] = await buildStockData(stocks) 
-
-		const latestNews: News = await getLatestNews();
 
 		const discoverMoreImages = ['/vercel.svg', '/next.svg', '/icons8-feather-50.png']
 		const discoverMoreTitles = [
@@ -83,7 +80,7 @@ export default async function Dashboard() {
                 </section>
                 <section>
                     <h1 className='text-xl border-b p-4'>News</h1>
-										<NewsArticlesClient data={latestNews.news}/>
+										<NewsArticlesClient />
                 </section>
 
             </div>
