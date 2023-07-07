@@ -17,7 +17,7 @@ export default function NewsArticleClient({ article }: { article: Article }) {
 					<div className="flex items-center">
 						<h2>{title}</h2>
 						{/* the below is causing text content rendered on the server not to match client side html */}
-						<h2 className='text-xs ml-2'>{timeDiff}m ago</h2> 
+						<h2 className='text-xs ml-2'>{Math.floor(timeDiff/60)} hrs ago</h2> 
 					</div>
 					<p className="text-xs">{article.headline}</p>
 					{article.symbols.length > 0 && 

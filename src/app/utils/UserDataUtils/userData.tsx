@@ -8,8 +8,10 @@ export async function getUserData(tgt: string) {
     return res.json()
 }
 
-export async function postWatchListData() {
+export async function postWatchListData(name: string) {
 	"use server"
+	if (!name) throw new Error('Watchlist must have a name!')
+
 	const res = await fetch('http://localhost:4000/watchlists', {
 					method: 'POST',
 					headers: {
@@ -17,9 +19,9 @@ export async function postWatchListData() {
 
 					},
 					body: JSON.stringify({
-							name: 'FAANG',
+							name: name,
 							icon: '/next.svg',
-							stocks: ['msft', 'googl', 'meta', 'amzn']
+							stocks: []
 					})
 	})
 

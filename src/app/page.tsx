@@ -75,9 +75,9 @@ export default async function Dashboard() {
 										<DiscoverMoreClientComponent data={discoverMoreData}/>
                 </section>
 
-                <section>
+                {/* <section>
                     <h1 className='text-xl'>Trending Lists</h1>
-                </section>
+                </section> */}
                 <section>
                     <h1 className='text-xl border-b p-4'>News</h1>
 										<NewsArticlesClient />

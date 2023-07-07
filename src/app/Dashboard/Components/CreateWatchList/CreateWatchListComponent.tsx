@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 import SelectorModal from './SelectorModal'
 import Modal from 'react-modal'
 import Image from 'next/image'
@@ -15,12 +15,14 @@ interface Modals {
 }
 
 
-export default function CreateWatchListComponent({ addWatchList }: { addWatchList: Function}) {
+export default function CreateWatchListComponent({ addWatchList }: { addWatchList: Function }) {
     const [modals, setModals] = useState({
         isSelectorOpen: false,
         isWatchListOpen: false,
         isScreenerOpen: false
     })
+
+		const [watchlistName, setWatchlistName] = useState('')
 
     const openModals = (tgts: string[]) => {
         const copy: Modals = {...modals}
@@ -35,6 +37,12 @@ export default function CreateWatchListComponent({ addWatchList }: { addWatchLis
         setModals(copy)
     }
 
+		const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+			e.preventDefault()
+			addWatchList(watchlistName) // post request to database
+			setWatchlistName('') // reset form
+			closeModals(['isWatchListOpen']) // close modal
+		}
 
     return (
         <React.Fragment>
@@ -44,20 +52,23 @@ export default function CreateWatchListComponent({ addWatchList }: { addWatchLis
                 <button className="text-2xl" onClick={() => openModals(['isSelectorOpen'])}>+</button>
             }
 
+						{/* modal for adding new watchlists to the database */}
             {modals.isWatchListOpen && 
                 <Modal isOpen={modals.isWatchListOpen} onRequestClose={() => closeModals(['isWatchListOpen', 'isSelectorOpen'])} style={customStyles}>
                     <div className="flex justify-between">
                         <h1>Create list</h1>
                         <button onClick={() => closeModals(['isSelectorOpen', 'isWatchListOpen'])}>X</button>
                     </div>
-                    <div className="flex justify-between">
+                    <form className="" onSubmit={handleSubmit}>
+											<div className="flex justify-between">
                         <Image className="bg-white" src="/icons8-feather-50.png" height={50} width={50} alt="temp logo" />
-                        <input className="p-4 w-3/4 text-black" placeholder="List Name"/>
-                    </div>
-                    <div className="flex justify-end p-2 text-[13px]">
-                        <button onClick={() => closeModals(['isWatchListOpen'])}>Cancel</button>
-                        <button className="ml-4" onClick={() => addWatchList()}>Create List</button>
-                    </div>
+                        <input className="p-4 w-3/4 text-black" placeholder="List Name" value={watchlistName} onChange={(e) => setWatchlistName(e.target.value)}/>
+											</div>
+											<div className="flex justify-end p-2 text-[13px]">
+													<button onClick={() => closeModals(['isWatchListOpen'])}>Cancel</button>
+													<button className="ml-4" type='submit'>Create List</button>
+											</div>
+										</form>
                 </Modal>
             }
 

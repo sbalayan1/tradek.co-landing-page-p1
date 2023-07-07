@@ -9,7 +9,7 @@ import { postWatchListData } from '../../../utils/UserDataUtils/userData'
 import { WatchList, Stock } from '@/app/globalInterfaces'
 
 
-// data is fetched on the server on the pages initial render and is passed into the client component
+// data is fetched on the server on the page's initial render and is passed into the client component
 // data is used to hydrate initial state
 // when we add a new watchlist, we invoke addWatchList
 // addWatchList updates the server using a server-side function and returns a json response
@@ -22,11 +22,11 @@ export default function WatchListsClientComponent({ watchListsData, watchListsSt
     const [watchLists, setWatchLists] = useState(watchListsData)
     const [watchListsStocks, setWatchListsStocks] = useState(watchListsStocksData)
 
-    const addWatchList = async () => {
-        const watchListRes = await postWatchListData()
-        const watchListStockData = await buildStockData(watchListRes.stocks)
-        setWatchLists([...watchLists, watchListRes])
-        setWatchListsStocks([...watchListsStocks, watchListStockData])
+    const addWatchList = async (name: string) => {
+			const watchListRes = await postWatchListData(name)
+			const watchListStockData = await buildStockData(watchListRes.stocks)
+			setWatchLists([...watchLists, watchListRes])
+			setWatchListsStocks([...watchListsStocks, watchListStockData])
     }
 
     return (
