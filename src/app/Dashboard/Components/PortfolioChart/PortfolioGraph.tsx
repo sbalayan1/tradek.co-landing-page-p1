@@ -69,5 +69,8 @@ export default function PortfolioGraph({ data, profit }: { data: Profit[], profi
       }]
   }
 
-    return (<Line options={options} data={graphData}/>)
+    return (
+			<div className="w-full h-full">
+				<Line className="w-full" options={options} data={graphData}/>
+			</div>)
 }

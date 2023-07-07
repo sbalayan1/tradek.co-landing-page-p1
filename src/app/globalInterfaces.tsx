@@ -37,4 +37,30 @@ interface DiscoverMoreData {
 	description: string
 }
 
-export type { Profit, Quote, Stock, MarketData, WatchList, DiscoverMoreData }
+
+// news article interfaces
+
+interface NewsImage {
+	size: string,
+	url: string
+}
+
+interface Article {
+	id: number,
+	author: string,
+	content: string,
+	created_at: string,
+	headline: string,
+	images: NewsImage[],
+	source: string,
+	summary: string,
+	symbols: string[],
+	updated_at: string,
+	url: string
+}
+
+interface News {
+	news: Article[]
+}
+
+export type { Profit, Quote, Stock, MarketData, WatchList, DiscoverMoreData, News, Article }

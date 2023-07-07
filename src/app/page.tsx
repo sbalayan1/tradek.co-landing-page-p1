@@ -1,5 +1,5 @@
 import "server-only" // this is a server component. we don't need to use a layout here because its format is not something shared across multiple pages
-import { Suspense } from "react";
+// import { Suspense } from "react";
 
 import Articles from "./Dashboard/Components/Articles/Articles";
 import BuyingPower from "./Dashboard/Components/BuyingPower/BuyingPower";
@@ -11,15 +11,19 @@ import WatchListsServerComponent from "./Dashboard/Components/WatchList/WatchLis
 import { getSubData, buildData } from "./UserDataUtils/buildPortfolioData";
 import { getUserData } from "./UserDataUtils/userData";
 import { buildStockData } from "./MarketDataUtils/getStocks";
+import { getLatestNews } from './MarketDataUtils/getLatestNews'
 
-import { Profit, Stock } from './globalInterfaces'
+import { News, Profit, Stock } from './globalInterfaces'
 import DiscoverMoreClientComponent from "./Dashboard/Components/DiscoverMore/DiscoverMoreClientComponent";
+import NewsArticlesClient from "./Dashboard/Components/NewsArticles/NewsArticlesClient";
 
 export default async function Dashboard() {
     const mockPortfolioData: Profit[] = buildData()
     const initialData: Profit[] = getSubData("1m", mockPortfolioData)
     const stocks = await getUserData('positions')
     const stocksData: Stock[] = await buildStockData(stocks) 
+
+		const latestNews: News = await getLatestNews();
 
 		const discoverMoreImages = ['/vercel.svg', '/next.svg', '/icons8-feather-50.png']
 		const discoverMoreTitles = [
@@ -56,10 +60,9 @@ export default async function Dashboard() {
 		})
 
     return (
-        // <Loading />
         <div className="flex p-4 justify-center">
             {/* This div should be a column with multiple sections*/}
-            <div className='p-4 w-1/2'> 
+            <div className='p-4 w-3/5'> 
 
                 {/* client component */}
                 <section>
@@ -79,19 +82,19 @@ export default async function Dashboard() {
                     <h1 className='text-xl'>Trending Lists</h1>
                 </section>
                 <section>
-                    <h1 className='text-xl'>News</h1>
-                    {/* renders news articles */}
+                    <h1 className='text-xl border-b p-4'>News</h1>
+										<NewsArticlesClient data={latestNews.news}/>
                 </section>
 
             </div>
 
             {/* this contains the users portfolio information such as current options/stocks/watchlists etc */}
             <aside className="ml-2 border h-full">
-                    <div className="flex justify-between border-b-2 text-xl p-4">
-                        <h1 className='text-xl'>Stocks</h1>
-                    </div>
-                    <StocksClientComponent stocksData={stocksData} />
-										<WatchListsServerComponent /> 
+							<div className="flex justify-between border-b-2 text-xl p-4">
+									<h1 className='text-xl'>Stocks</h1>
+							</div>
+							<StocksClientComponent stocksData={stocksData} />
+							<WatchListsServerComponent /> 
             </aside>
         </div>
     )

@@ -16,7 +16,7 @@ export default function DiscoverMoreClientComponent({ data }: { data: DiscoverMo
 			{data.slice(start, start+5).map(obj => {
 				return (
 					<div key={obj.title} className="p-4 text-xs">
-						<div className="h-36 w-full bg-white p-6 flex flex-col justify-center">
+						<div className="h-36 w-full bg-white p-6 flex flex-col justify-center items-center">
 							<Image className="w-32" alt="temp logo" src={obj.img} height={40} width={32}/>
 						</div>
 						<h2 className="text-sm">{obj.title}</h2>
