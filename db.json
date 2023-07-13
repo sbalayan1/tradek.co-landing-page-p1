@@ -51,6 +51,24 @@
         "amzn"
       ],
       "id": 4
+    },
+    {
+      "name": "hi russell",
+      "icon": "/next.svg",
+      "stocks": [],
+      "id": 5
+    },
+    {
+      "name": "hi gimelle",
+      "icon": "/next.svg",
+      "stocks": [],
+      "id": 6
+    },
+    {
+      "name": "hi there",
+      "icon": "/next.svg",
+      "stocks": [],
+      "id": 7
     }
   ]
 }

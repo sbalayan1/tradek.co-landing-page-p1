@@ -13,7 +13,7 @@ export default function NewsArticleClient({ article }: { article: Article }) {
 
 		return (
 			<li key={article.id} className="flex w-full h-40 justify-between p-4 border-b items-center hover:bg-gray-800">
-				<div className="mr-8 h-full flex flex-col justify-evenly">
+				<div className="mr-8 h-full flex flex-col justify-evenly w-5/6">
 					<div className="flex items-center">
 						<h2>{title}</h2>
 						{/* the below is causing text content rendered on the server not to match client side html */}
@@ -21,7 +21,7 @@ export default function NewsArticleClient({ article }: { article: Article }) {
 					</div>
 					<p className="text-xs">{article.headline}</p>
 					{article.symbols.length > 0 && 
-						<ul className="flex text-xs">
+						<ul className="flex text-xs w-3/4 flex-wrap">
 							{article.symbols.map(symbol => <li className="mr-2" key={symbol}>{symbol}</li>)}
 						</ul>
 					}

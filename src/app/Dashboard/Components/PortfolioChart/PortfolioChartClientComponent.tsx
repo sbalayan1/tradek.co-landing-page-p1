@@ -29,7 +29,6 @@ export default function PortfolioChartClientComponent({ mockPortfolioData, initi
         })
     }
 
-    
     return (
         <div className="mb-2">
             {/* Client component */}

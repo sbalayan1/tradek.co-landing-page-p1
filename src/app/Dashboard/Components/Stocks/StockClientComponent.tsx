@@ -54,7 +54,6 @@ const options = {
 };
 
 import { Quote } from '@/app/globalInterfaces';
-import { Ruge_Boogie } from 'next/font/google';
 
 export default function StockClientComponent({ stockName, stockData }: { stockName: string, stockData: Quote[]}) {
     const openPrice = Number(stockData[0].c.toFixed(2)) // tofixed returns a string.

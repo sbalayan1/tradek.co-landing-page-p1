@@ -81,7 +81,7 @@ export default async function Dashboard() {
                 </section> */}
                 <section>
                     <h1 className='text-xl border-b p-4'>News</h1>
-										<NewsArticlesClient />
+										<NewsArticlesClient target={''} />
                 </section>
 
             </div>

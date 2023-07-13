@@ -1,20 +1,20 @@
 "use server"
 import "server-only"
 
-const api_key = process.env.API_KEY 
-const secret_key = process.env.API_SECRET_KEY 
+const API_KEY = process.env.API_KEY 
+const SECRET_KEY = process.env.API_SECRET_KEY 
 
 import { Stock, MarketData } from '@/app/globalInterfaces'
 
 
 export async function getAllAssets() {
-	if (!api_key || !secret_key) throw new Error('Input your API keys in the .env')
+	if (!API_KEY || !SECRET_KEY) throw new Error('Input your API keys in the .env')
 	const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      'APCA-API-KEY-ID': api_key,
-      'APCA-API-SECRET-KEY': secret_key,
+      'APCA-API-KEY-ID': API_KEY,
+      'APCA-API-SECRET-KEY': SECRET_KEY,
     },
   };
 
@@ -22,7 +22,6 @@ export async function getAllAssets() {
 	if (!res.ok) throw new Error('Failed to fetch data')
 	return res.json()
 }
-
 
 
 function createDateString() {
@@ -36,13 +35,13 @@ function createDateString() {
 }
 
 export async function getAlpacaData(stock: string) {
-  if (!api_key || !secret_key) throw new Error('Input your API keys in the .env')
+  if (!API_KEY || !SECRET_KEY) throw new Error('Input your API keys in the .env')
   const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      'APCA-API-KEY-ID': api_key,
-      'APCA-API-SECRET-KEY': secret_key,
+      'APCA-API-KEY-ID': API_KEY,
+      'APCA-API-SECRET-KEY': SECRET_KEY,
     },
   };
 
