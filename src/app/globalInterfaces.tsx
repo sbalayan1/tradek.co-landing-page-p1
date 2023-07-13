@@ -81,4 +81,20 @@ interface Asset {
 	[key: string]: any
 }
 
-export type { Profit, Quote, Stock, MarketData, WatchList, DiscoverMoreData, News, Article, Asset }
+
+// timeframe types
+
+type TimeframesType = '1d' | '1w' | '1m' | '3m' | '1y' | '5y'
+// the below creates a Mapped Type of the Timeframes type. under the hood we have 
+	// type TimeframeData = {
+	// 	"1d"?: MarketData[] | undefined;
+	// 	"1w"?: MarketData[] | undefined;
+	// 	"1m"?: MarketData[] | undefined;
+	// 	"3m"?: MarketData[] | undefined;
+	// 	"1y"?: MarketData[] | undefined;
+	// 	"5y"?: MarketData[] | undefined;
+type TimeframeData = {
+	[Property in TimeframesType]?: MarketData // https://www.typescriptlang.org/docs/handbook/2/mapped-types.html
+}
+
+export type { Profit, Quote, Stock, MarketData, WatchList, DiscoverMoreData, News, Article, Asset, TimeframeData, TimeframesType }

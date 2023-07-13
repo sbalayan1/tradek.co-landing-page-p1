@@ -4,7 +4,7 @@ import "server-only" // this is a server component. we don't need to use a layou
 import Articles from "./Dashboard/Components/Articles/Articles";
 import BuyingPower from "./Dashboard/Components/BuyingPower/BuyingPower";
 import StocksClientComponent from "./Dashboard/Components/Stocks/StocksClientComponent";
-import PortfolioChartClientComponent from "./Dashboard/Components/PortfolioChart/PortfolioChartClientComponent"
+import { PortfolioChartClientComponent } from "./Dashboard/Components/PortfolioChart/PortfolioChartClientComponent"
 import WatchListsServerComponent from "./Dashboard/Components/WatchList/WatchListsServerComponent";
 
 // helper functions for building trade data. we don't need to include these in the client component. instead we can instantiate them on the server and pass them to the client
@@ -17,8 +17,8 @@ import DiscoverMoreClientComponent from "./Dashboard/Components/DiscoverMore/Dis
 import NewsArticlesClient from "./Dashboard/Components/NewsArticles/NewsArticlesClient";
 
 export default async function Dashboard() {
-    const mockPortfolioData: Profit[] = buildData()
-    const initialData: Profit[] = getSubData("1m", mockPortfolioData)
+    const mockPortfolioData: Profit[] = buildData() // creates mock portfolio data
+    const initialData: Profit[] = getSubData("1m", mockPortfolioData) // creates a Profit[] of subData
 		const userStocks: string[] = await getUserData('positions')
     const userStocksData: Stock[] = await buildStockData(userStocks) 
 
