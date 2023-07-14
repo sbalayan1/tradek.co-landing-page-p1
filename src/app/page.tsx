@@ -1,24 +1,27 @@
 import "server-only" // this is a server component. we don't need to use a layout here because its format is not something shared across multiple pages
 // import { Suspense } from "react";
 
+// import components
 import Articles from "./Dashboard/Components/Articles/Articles";
 import BuyingPower from "./Dashboard/Components/BuyingPower/BuyingPower";
 import StocksClientComponent from "./Dashboard/Components/Stocks/StocksClientComponent";
-import { PortfolioChartClientComponent } from "./Dashboard/Components/PortfolioChart/PortfolioChartClientComponent"
 import WatchListsServerComponent from "./Dashboard/Components/WatchList/WatchListsServerComponent";
+import DiscoverMoreClientComponent from "./Dashboard/Components/DiscoverMore/DiscoverMoreClientComponent";
+import NewsArticlesClient from "./Dashboard/Components/NewsArticles/NewsArticlesClient";
+import MasterChartClient from "./Dashboard/Components/MasterChart/MasterChartClient";
+
 
 // helper functions for building trade data. we don't need to include these in the client component. instead we can instantiate them on the server and pass them to the client
-import { getSubData, buildData } from "./utils/UserDataUtils/buildPortfolioData";
+import { buildData } from "./utils/UserDataUtils/buildPortfolioData";
 import { getUserData } from "./utils/UserDataUtils/userData";
 import { buildStockData } from "./utils/MarketDataUtils/getStocks";
 
+// import interfaces
 import { Profit, Stock } from './globalInterfaces'
-import DiscoverMoreClientComponent from "./Dashboard/Components/DiscoverMore/DiscoverMoreClientComponent";
-import NewsArticlesClient from "./Dashboard/Components/NewsArticles/NewsArticlesClient";
+
 
 export default async function Dashboard() {
     const mockPortfolioData: Profit[] = buildData() // creates mock portfolio data
-    const initialData: Profit[] = getSubData("1m", mockPortfolioData) // creates a Profit[] of subData
 		const userStocks: string[] = await getUserData('positions')
     const userStocksData: Stock[] = await buildStockData(userStocks) 
 
@@ -64,7 +67,7 @@ export default async function Dashboard() {
 
                 {/* client component */}
                 <section>
-                    <PortfolioChartClientComponent mockPortfolioData={mockPortfolioData} initialData={initialData} />
+                    <MasterChartClient data={mockPortfolioData} ticker={undefined}/>
                     <BuyingPower />
                 </section>
 

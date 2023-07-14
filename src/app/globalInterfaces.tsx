@@ -4,14 +4,14 @@ interface Profit {
 }
 
 interface Quote {
-    t: string,
-    o: number,
-    h: number,
-    l: number,
-    c: number,
-    v: number,
-    n: number
-    vw: number
+	t: string,
+	o: number,
+	h: number,
+	l: number,
+	c: number,
+	v: number,
+	n: number
+	vw: number
 }
 
 interface Stock {
@@ -87,12 +87,12 @@ interface Asset {
 type TimeframesType = '1d' | '1w' | '1m' | '3m' | '1y' | '5y'
 // the below creates a Mapped Type of the Timeframes type. under the hood we have 
 	// type TimeframeData = {
-	// 	"1d"?: MarketData[] | undefined;
-	// 	"1w"?: MarketData[] | undefined;
-	// 	"1m"?: MarketData[] | undefined;
-	// 	"3m"?: MarketData[] | undefined;
-	// 	"1y"?: MarketData[] | undefined;
-	// 	"5y"?: MarketData[] | undefined;
+	// 	"1d"?: MarketData[]
+	// 	"1w"?: MarketData[]
+	// 	"1m"?: MarketData[]
+	// 	"3m"?: MarketData[]
+	// 	"1y"?: MarketData[]
+	// 	"5y"?: MarketData[]
 type TimeframeData = {
 	[Property in TimeframesType]?: MarketData // https://www.typescriptlang.org/docs/handbook/2/mapped-types.html
 }
