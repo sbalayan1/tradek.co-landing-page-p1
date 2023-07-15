@@ -1,5 +1,5 @@
-import Articles from "./Dashboard/Components/Articles/Articles";
-import BuyingPower from "./Dashboard/Components/BuyingPower/BuyingPower";
+import Articles from "./Components/Articles/Articles";
+import BuyingPower from "./Components/BuyingPower/BuyingPower";
 
 export default function Loading() {
     function stockLayouts(size: number) { 

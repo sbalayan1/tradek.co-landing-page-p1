@@ -1,6 +1,6 @@
-import { getUserData } from '../../../utils/UserDataUtils/userData'
+import { getUserData } from '@/app/utils/UserDataUtils/userData'
 import { getLatestNews } from '@/app/utils/MarketDataUtils/getLatestNews'
-import { News, WatchList } from '../../../globalInterfaces'
+import { WatchList, News } from '@/app/globalInterfaces'
 import NewsArticleClient from './NewsArticleClient'
 
 export default async function NewsArticlesClient({ target }: { target: string }) {

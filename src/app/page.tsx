@@ -2,13 +2,13 @@ import "server-only" // this is a server component. we don't need to use a layou
 // import { Suspense } from "react";
 
 // import components
-import Articles from "./Dashboard/Components/Articles/Articles";
-import BuyingPower from "./Dashboard/Components/BuyingPower/BuyingPower";
-import StocksClientComponent from "./Dashboard/Components/Stocks/StocksClientComponent";
-import WatchListsServerComponent from "./Dashboard/Components/WatchList/WatchListsServerComponent";
-import DiscoverMoreClientComponent from "./Dashboard/Components/DiscoverMore/DiscoverMoreClientComponent";
-import NewsArticlesClient from "./Dashboard/Components/NewsArticles/NewsArticlesClient";
-import MasterChartClient from "./Dashboard/Components/MasterChart/MasterChartClient";
+import Articles from "./Components/Articles/Articles";
+import BuyingPower from "./Components/BuyingPower/BuyingPower";
+import StocksClientComponent from "./Components/Stocks/StocksClientComponent";
+import WatchListsServerComponent from "./Components/WatchList/WatchListsServerComponent";
+import DiscoverMoreClientComponent from "./Components/DiscoverMore/DiscoverMoreClientComponent";
+import NewsArticlesClient from "./Components/NewsArticles/NewsArticlesClient";
+import MasterChartClient from "./MasterChart/MasterChartClient";
 
 
 // helper functions for building trade data. we don't need to include these in the client component. instead we can instantiate them on the server and pass them to the client

@@ -45,7 +45,6 @@ function createDateString(timeframe: '1d' | '1w' | '1m' | '3m' | '1y' | '5y' = '
 		}
 	}
 	if (timeframe === '1y') currentDate.setFullYear(currentDate.getFullYear() - 1)
-
 	if (timeframe === '5y') currentDate.setFullYear(currentDate.getFullYear() - 5)
 	
   currentDate.setHours(0, 0, 0) // set hours of date to beginning of day
@@ -93,7 +92,8 @@ export async function testGetAlpacaData(stock: string, timeframe: '1d' | '1w' | 
 
 	// when timeframe param is '' or 1day, targetString will have a timeframe of 1min and start on the current day otherwise, get daily data
 	const dateString = createDateString(timeframe)
-	let tgtString = `https://data.alpaca.markets/v2/stocks/bars?symbols=${stock}&timeframe=${timeframe === '1d' ? '1Min' : '1Day'}&start=${dateString}&limit=${24*60}&adjustment=raw`
+	const tgtTimeframe = timeframe === '1d' ? '1Min' : '1Day'
+	let tgtString = `https://data.alpaca.markets/v2/stocks/bars?symbols=${stock}&timeframe=${tgtTimeframe}&start=${dateString}&limit=${24*60}&adjustment=all`
 	if (next_token) tgtString += `&page_token=%${next_token}` // add the token to the end of the tgtString if it exists. 	
 
   // note if you don't pass a start and end, the API defaults to the start of the CURRENT DAY. If there's no market data for that day, then you'll return an array of empty objects
@@ -110,12 +110,6 @@ export async function testGetAlpacaData(stock: string, timeframe: '1d' | '1w' | 
 
   return res.json()
 }
-
-// initialize empty array for data
-// while there is a next_page_token or the data array is empty
-	// make fetch requests with or without the next_page_token. if there is a next_page_token, pass it as an argument or pass an empty string
-	// get back a json response. push the json_response in to empty array
-
 
 export async function buildStockData(stocks: string[]): Promise<Stock[]> {
   "use server"

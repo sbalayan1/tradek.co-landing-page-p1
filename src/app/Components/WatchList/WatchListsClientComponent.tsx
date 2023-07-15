@@ -1,11 +1,15 @@
 "use client"
 import { useState } from 'react'
+
+// import components
 import CreateWatchListComponent from "../CreateWatchList/CreateWatchListComponent"
 import WatchListClientComponent from './WatchListClient'
-import { buildStockData } from "../../../utils/MarketDataUtils/getStocks"
-import { postWatchListData } from '../../../utils/UserDataUtils/userData'
 
+// import helper functions
+import { buildStockData } from '@/app/utils/MarketDataUtils/getStocks'
+import { postWatchListData } from '@/app/utils/UserDataUtils/userData'
 
+// import typescript types
 import { WatchList, Stock } from '@/app/globalInterfaces'
 
 

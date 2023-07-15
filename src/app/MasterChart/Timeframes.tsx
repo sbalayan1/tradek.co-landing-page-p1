@@ -8,8 +8,8 @@ export default function Timeframes({ selected, updateSubData, ticker }: { select
 		if (!ticker) portfolioTimeframes.forEach(t => timeframes.push(t))
 
     return (
-        <div className="flex w-1/2">
-            {timeframes.map(t => <Timeframe key={t} t={t} selected={selected} updateSubData={updateSubData}/>)}
-        </div>
+			<div className="flex w-1/2">
+				{timeframes.map(t => <Timeframe key={t} t={t} selected={selected} updateSubData={updateSubData}/>)}
+			</div>
     )
 }

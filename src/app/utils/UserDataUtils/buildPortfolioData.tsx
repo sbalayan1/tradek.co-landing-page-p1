@@ -44,7 +44,7 @@ const getSubData = (tgt: string | TimeframesType, arr: Profit[]) => {
     return res
 }
 
-const calculateProfit = (arr: Profit[] | Quote[] | undefined): Number => {
+const calculateProfit = (arr: Profit[] | Quote[] | undefined): number => {
 	if (!arr) return 0
 	let result = 0
 
@@ -55,26 +55,24 @@ const calculateProfit = (arr: Profit[] | Quote[] | undefined): Number => {
 			const prev = arr[i-1]
 			result += curr.balance - prev.balance
 		}
-
-		// result = arr[0].balance - arr[arr.length - 1].balance
 	} else {
-		const openPrice = arr[0].c // tofixed returns a string.
-		const currentPrice = arr[arr.length-1].c
-		result = Number((currentPrice - openPrice).toFixed(2))
+		const oldestPrice = arr[0].vw // take the vw price
+		const currentPrice = arr[arr.length-1].vw
+		result = parseFloat((currentPrice - oldestPrice).toFixed(2)) // toFixed takes the number and converts it to 2 max decimal points
 	}
 
 	return result
 }
 
-const calculatePercentageChange = (arr:  Profit[] | Quote[] | undefined): number | string => {
+const calculatePercentageChange = (arr:  Profit[] | Quote[] | undefined): number  => {
 	if (!arr) return 0
-	let result: number | string = 0
+	let result = 0
 	if (isValidProfitData(arr)) {
 		result = Math.floor((arr[arr.length - 1].balance - arr[0].balance)/arr.length)
 	} else {
-		const openPrice = Number(arr[0].c.toFixed(2)) // tofixed returns a string.
-		const currentPrice = Number(arr[arr.length-1].c.toFixed(2))
-		result = (((currentPrice - openPrice)/ openPrice) * 100).toFixed(2)
+		const oldestPrice = arr[0].vw // take the vw price
+		const currentPrice = arr[arr.length - 1].vw
+		result = parseFloat((((currentPrice - oldestPrice) / oldestPrice) * 100).toFixed(2))
 	}
 
 	return result
